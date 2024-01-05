@@ -1,5 +1,17 @@
-<app-admin-layout>
-  <div admin-content>
-    <offers class="space-y-4"></offers>
-  </div>
-</app-admin-layout>
+
+<ng-container *ngIf="isLogged; else notLogged">
+  <app-admin-layout>
+    <offers admin-content></offers>
+    <search-bar search-Bar></search-bar>
+  </app-admin-layout>
+</ng-container>
+
+
+<ng-template
+  #notLogged
+>
+  <app-layout>
+    <offers content></offers>
+    <search-bar search-Bar></search-bar>
+  </app-layout>
+</ng-template>

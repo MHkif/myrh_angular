@@ -1,0 +1,29 @@
+<style>
+  /* Hide scrollbar for WebKit-based browsers (Chrome, Safari, etc.) */
+  .hideScroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  .hideScroll {
+    /* IE and Edge */
+    -ms-overflow-style: none;
+
+    /* Firefox */
+    scrollbar-width: none;
+  }
+</style>
+<section class="max-h-screen bg-gray-50 overflow-hidden">
+  <!-- Content -->
+  <main class="w-[calc(100%)] max-h-screen flex flex-col">
+    <app-navbar />
+    <div class="px-8 py-6 w-full flex flex-row min-h-screen gap-8">
+      <section class="hideScroll w-full overflow-y-auto pb-20">
+        <ng-content select="[content]"></ng-content>
+      </section>
+
+      <ng-content selct="[search-bar]"></ng-content>
+    </div>
+  </main>
+  <!-- End Content -->
+</section>
