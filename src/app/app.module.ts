@@ -33,6 +33,7 @@ import { LayoutComponent } from './layouts/layout/layout.component';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import {CandidatRegisterComponent} from "./features/candidat/auth/register/candidat-register.component";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     LoginComponent,
     AuthLayoutComponent,
     AdminLayoutComponent,
+    CandidatRegisterComponent,
     AdminSideBarComponent,
     NavbarComponent,
     SearchBarComponent,
