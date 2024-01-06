@@ -2,14 +2,18 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Offer, PageOffers } from '../model/offer.model';
 import { Observable } from 'rxjs';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root',
 })
 export class OfferService {
   private base_url = 'http://localhost:8080/myrh/api/v1/offers';
+  private backend_host=  environment.backendHost;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
   public save(offer: Offer) {
     return this.http.post<Offer>(this.base_url, offer);
@@ -23,11 +27,8 @@ export class OfferService {
     });
   }
 
-  public getAll(
-    queries: Map<string, string> = new Map()
-  ): Observable<PageOffers> {
+  public getAll(queries: Map<string, string> = new Map()): Observable<PageOffers> {
     let params = new HttpParams();
-
     queries.forEach((value, key) => {
       params = params.append(key, value);
     });
@@ -38,5 +39,9 @@ export class OfferService {
 
   public getOne(code: string): Observable<Offer> {
     return this.http.get<Offer>(this.base_url + '/' + code);
+  }
+
+  changeVisibility(offerId: number, value: string) {
+    return this.http.patch(this.base_url + '/' + offerId + '/visibility/'+value,null);
   }
 }

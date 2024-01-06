@@ -23,3 +23,10 @@ export interface PageOffers {
   numberOfElements: boolean;
   empty: boolean;
 }
+
+
+export enum OfferStatus {
+  ACCEPTED="ACCEPTED",
+  PENDING="PENDING",
+  REFUSED="REFUSED"
+}

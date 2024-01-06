@@ -1,0 +1,92 @@
+<div
+  *ngIf="offers"
+  class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <tr>
+      <th scope="col" class="px-6 py-3">
+        title
+      </th>
+      <th scope="col" class="px-6 py-3">
+        salary
+      </th>
+      <th scope="col" class="px-6 py-3">
+        location
+      </th>
+      <th scope="col" class="px-6 py-3">
+        status
+      </th>
+      <th scope="col" class="px-6 py-3">
+        company
+      </th>
+      <th scope="col" class="px-6 py-3">
+        Visibility
+      </th>
+      <th scope="col" class="px-6 py-3">
+        actions
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let offer of offers.content"
+      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+      <th  class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white">
+        {{offer.title}}
+      </th>
+      <td class="px-6 py-4">
+        {{offer.salary}}
+      </td>
+      <td class="px-6 py-4">
+        {{offer.city.name}}
+      </td>
+      <td class="px-6 py-4">
+        {{offer.status}}
+      </td>
+      <td class="px-6 py-4">
+        {{offer.company.name}}
+      </td>
+      <td class="px-6 py-4">
+        <select
+          (change)="changeVisibility(offer.id, $event)"
+          class="block  px-3 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-gray-700 dark:text-white dark:border-gray-700">
+          <option
+            *ngFor="let visbility  of OfferStatus | keyvalue"
+             [selected]="offer.status === visbility.key"
+            [value]="visbility.key">
+              {{visbility.value}}
+          </option>
+          </select>
+      </td>
+
+      <td class="px-6 py-4 text-sm">
+        <a
+          [routerLink]="['/offers', offer.id]"
+          class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-600">
+          View
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="!offers" class="">
+  <div class="flex flex-col  items-center justify-center">
+    <div class="flex flex-col items-center justify-center">
+      <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-red-100">
+        <svg class="w-10 h-10 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9 7a1 1 0 112 0v4a1 1 0 11-2 0V7zm1 10a1 1 0 100-2 1 1 0 000 2z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </div>
+      <h2 class="text-2xl font-medium text-gray-900 dark:text-white">No offers found</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Try adjusting your search or filter to find what you're looking for.
+      </p>
+    </div>
+  </div>
+</div>
