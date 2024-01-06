@@ -33,6 +33,7 @@ import { LayoutComponent } from './layouts/layout/layout.component';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AccountValidationComponent } from './account-validation/account-validation.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     OfferDetailComponent,
     AdminLoginComponent,
     AdminHomeComponent,
+    AccountValidationComponent,
     // Metarial
   ],
   imports: [

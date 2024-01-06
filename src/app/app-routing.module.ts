@@ -6,6 +6,7 @@ import { OfferFormComponent } from './offer/offer-form/offer-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './service/auth.guard';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
+import { AccountValidationComponent } from './account-validation/account-validation.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
     path: 'company/auth/login',
     component: LoginComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'company/auth/confirm-account',
+    component: AccountValidationComponent,
   },
 
   {
