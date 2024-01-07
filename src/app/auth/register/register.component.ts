@@ -1,20 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { RecruiterService } from '../../service/recruiter.service';
-import { Recruiter } from '../../model/recruiter.model';
-import { CompanyService } from '../../service/company.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Company } from '../../model/company.model';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { beginRegister } from '../../store/company/company.action';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-register',
@@ -22,12 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(
-    private companyService: CompanyService,
-    private router: Router,
-    private builder: FormBuilder,
-    private store: Store
-  ) {}
+  constructor(private builder: FormBuilder, private store: Store) {}
   signUpForm!: FormGroup;
   name_Error: string = '';
   email_Error: string = '';
@@ -80,6 +64,7 @@ export class RegisterComponent implements OnInit {
         email: this.signUpForm.value.email,
         password: this.signUpForm.value.password,
         image: null,
+        enabled: false
       };
 
       if (this.signUpForm.value.confirmPassword === company.password) {
@@ -87,8 +72,7 @@ export class RegisterComponent implements OnInit {
       } else {
         this.confirm_pass_Error = 'Mismatch Password';
       }
-    } 
-    else {
+    } else {
       if (this.signUpForm?.get('name')?.hasError('required')) {
         this.name_Error = 'Name is required.';
       } else if (this.signUpForm?.get('name')?.hasError('minlength')) {

@@ -11,4 +11,5 @@ export const companyState: Company = {
   email: null,
   password: null,
   image: null,
+  enabled: null,
 };

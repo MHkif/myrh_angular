@@ -24,9 +24,10 @@ export class AuthGuard implements CanActivate, OnInit {
 
   canActivate(): boolean {
     if (this.isLoggedIn) {
-      this.router.navigate(['/offers']); // Redirect to home page if logged in
+      this.router.navigateByUrl('/offers'); // Redirect to home page if logged in
       return false; // Cancel navigation to the original route
     }
+    this.router.navigateByUrl('/company/auth/login'); // Redirect to home page if logged in
     return true; // Allow navigation if not logged in
   }
 }

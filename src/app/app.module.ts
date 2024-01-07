@@ -33,6 +33,7 @@ import { LayoutComponent } from './layouts/layout/layout.component';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AccountValidationComponent } from './account-validation/account-validation.component';
 import {CandidatRegisterComponent} from "./features/candidat/auth/register/candidat-register.component";
 import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
 import { AdminOfferListComponent } from './shared/admin/admin-offer-list/admin-offer-list.component';
@@ -57,8 +58,10 @@ import { AdminOfferListComponent } from './shared/admin/admin-offer-list/admin-o
     OfferDetailComponent,
     AdminLoginComponent,
     AdminHomeComponent,
+    AccountValidationComponent,
     AdminDashboardComponent,
     AdminOfferListComponent,
+
     // Metarial
   ],
   imports: [

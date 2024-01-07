@@ -28,7 +28,13 @@ export class CompanyService {
   public save(company: Company) {
     return this.http.post<Company>(this.base_url, company);
   }
+  public confirmAccount(token: string): Observable<ResponseHttp> {
+    const params = new HttpParams().set('token', token.toString());
 
+    return this.http.get<ResponseHttp>(this.base_url + '/confirm-account', {
+      params,
+    });
+  }
   public auth(email: string, password: string): Observable<ResponseHttp> {
     return this.http.post<ResponseHttp>(this.base_url + '/auth', {
       email,
@@ -44,7 +50,19 @@ export class CompanyService {
       email: companyRes.email,
       password: companyRes.password,
       image: companyRes.image,
+      enabled: companyRes.enabled,
     };
     return company;
+  }
+
+  sendVerification(token: string): Observable<ResponseHttp> {
+    const params = new HttpParams().set('token', token);
+
+    return this.http.get<ResponseHttp>(
+      this.base_url + '/confirm-account/re-send',
+      {
+        params,
+      }
+    );
   }
 }

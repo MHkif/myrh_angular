@@ -9,7 +9,7 @@ import { exhaustMap, map } from 'rxjs';
 import { CompanyService } from 'src/app/service/company.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AdminService } from 'src/app/admin.service';
+import { AdminService } from 'src/app/service/admin.service';
 
 @Injectable()
 export class AuthEffect {
