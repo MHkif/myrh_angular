@@ -1,19 +1,4 @@
-<style>
-    /* Hide scrollbar for WebKit-based browsers (Chrome, Safari, etc.) */
-.hideScroll::-webkit-scrollbar {
-  display: none;
- 
-}
 
-/* Hide scrollbar for IE, Edge, and Firefox */
-.hideScroll {
-  /* IE and Edge */
-  -ms-overflow-style: none;
-
-  /* Firefox */
-  scrollbar-width: none;
-}
-</style>
 <section class=" max-h-screen bg-gray-50 overflow-hidden">
   <!-- Side Bar -->
   <app-admin-side-bar />
@@ -26,7 +11,7 @@
       <section class="hideScroll w-full overflow-y-auto pb-20">
         <ng-content select="[admin-content]"></ng-content>
       </section>
-      <ng-content selct="[search-bar]"></ng-content>
+      <ng-content select="[search-bar]"></ng-content>
     </div>
   </main>
   <!-- End Content -->

@@ -30,12 +30,12 @@ export class OffersComponent {
   ngOnInit(): void {
     this.router.navigate(['offers'], {
       queryParams: {
-        page: 1,
+        page: 0 ,
         size: 5,
       },
     });
     this.route.queryParams.subscribe((params) => {
-      this.currentPage = params['page'] || 1;
+      this.currentPage = params['page'] || 0;
       this.size = params['size'] || 5;
       let queries = new Map<string, string>();
       for (let key in params) {

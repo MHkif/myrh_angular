@@ -34,6 +34,8 @@ import { OfferDetailComponent } from './offer/offer-detail/offer-detail.componen
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import {CandidatRegisterComponent} from "./features/candidat/auth/register/candidat-register.component";
+import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
+import { AdminOfferListComponent } from './shared/admin/admin-offer-list/admin-offer-list.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import {CandidatRegisterComponent} from "./features/candidat/auth/register/candi
     OfferDetailComponent,
     AdminLoginComponent,
     AdminHomeComponent,
+    AdminDashboardComponent,
+    AdminOfferListComponent,
     // Metarial
   ],
   imports: [
