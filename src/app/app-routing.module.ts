@@ -7,16 +7,18 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './service/auth.guard';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
 import { AccountValidationComponent } from './account-validation/account-validation.component';
+import {AdminDashboardComponent} from "./features/admin/dashboard/admin-dashboard.component";
 
 
 const routes: Routes = [
   {
-    path: 'company/auth/register',
-    component: RegisterComponent,
+    path: 'company/auth/register', component: RegisterComponent,
+    // canActivate: [AuthGuard],
   },
   {
-    path: 'company/auth/login',
-    component: LoginComponent,
+    path: 'company/auth/login', component: LoginComponent,
+    // canActivate: [AuthGuard],
+
   },
   {
     path: 'company/auth/confirm-account/:token',
@@ -31,11 +33,9 @@ const routes: Routes = [
     path: 'admin/home',
     component: LoginComponent,
   },
-
   {
     path: 'offers',
     component: HomeComponent,
-    // canActivate: [AuthGuard],
   },
   {
     path: '',
