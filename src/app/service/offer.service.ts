@@ -16,6 +16,8 @@ export class OfferService {
   ) {}
 
   public save(offer: Offer) {
+    const formData = new FormData();
+
     return this.http.post<Offer>(this.base_url, offer);
   }
 
