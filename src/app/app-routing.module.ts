@@ -4,10 +4,11 @@ import {RegisterComponent} from './auth/register/register.component';
 import {HomeComponent} from './home/home.component';
 import {OfferFormComponent} from './offer/offer-form/offer-form.component';
 import {LoginComponent} from './auth/login/login.component';
-import {AuthGuard} from './service/auth.guard';
 import {OfferDetailComponent} from './offer/offer-detail/offer-detail.component';
 import {AdminDashboardComponent} from "./features/admin/dashboard/admin-dashboard.component";
+import {AccountValidationComponent} from "./account-validation/account-validation.component";
 
+// http://localhost:4200/company/auth/confirm-account/eeeffc36-1aa5-44c5-8377-ab3310442697
 const routes: Routes = [
   {
     path: 'company/auth/register', component: RegisterComponent,
@@ -16,7 +17,6 @@ const routes: Routes = [
   {
     path: 'company/auth/login', component: LoginComponent,
     // canActivate: [AuthGuard],
-
   },
   {
     path: 'admin/auth/login', component: LoginComponent,
@@ -41,6 +41,10 @@ const routes: Routes = [
   },
   {
     path: 'offers/:id', component: OfferDetailComponent,
+  },
+  {
+    path: 'company/auth/confirm-account/:token',
+    component: AccountValidationComponent,
   },
 ];
 
