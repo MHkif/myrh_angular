@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { JobApplicantService } from 'src/app/job-applicant.service';
+import { JobApplicantService } from 'src/app/service/job-applicant.service';
 import { JobApplicant } from 'src/app/model/jobApplicant.model';
 import { Offer } from 'src/app/model/offer.model';
 import { OfferService } from 'src/app/service/offer.service';
@@ -58,10 +58,10 @@ export class OfferDetailComponent implements OnInit {
     });
   }
 
-  uploadFile(event:any) {
+  uploadFile(event: any) {
     this.jobApplicantForm.value.resume = event.target.files[0];
-    console.log(this.jobApplicantForm.value.resume)
-    console.log(typeof this.jobApplicantForm.value.resume)
+    console.log(this.jobApplicantForm.value.resume);
+    console.log(typeof this.jobApplicantForm.value.resume);
   }
   OnApply(offer: Offer): void {
     let jobApplicant: JobApplicant = {

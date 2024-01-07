@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { PageOffers } from '../../model/offer.model';
 import { Observable, catchError, throwError } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OfferService } from '../../service/offer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -21,7 +20,6 @@ export class OffersComponent {
   checkMember = false;
 
   constructor(
-    private fb: FormBuilder,
     private service: OfferService,
     private route: ActivatedRoute,
     private router: Router

@@ -1,4 +1,4 @@
-import { EntityState } from "@ngrx/entity";
+import { EntityState } from '@ngrx/entity';
 
 export interface Company {
   id: number | null | undefined;
@@ -6,6 +6,7 @@ export interface Company {
   email: string | null | undefined;
   password: string | null | undefined;
   image: string | null | undefined;
+  enabled: boolean | null | undefined;
 }
 
 export interface PageCompany {
@@ -22,6 +23,4 @@ export interface PageCompany {
   empty: boolean;
 }
 
-export interface CompanyModel extends EntityState<Company>{
-
-}
+export interface CompanyModel extends EntityState<Company> {}

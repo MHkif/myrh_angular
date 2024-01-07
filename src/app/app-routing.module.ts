@@ -20,7 +20,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'company/auth/confirm-account',
+    path: 'company/auth/confirm-account/:token',
     component: AccountValidationComponent,
   },
 
