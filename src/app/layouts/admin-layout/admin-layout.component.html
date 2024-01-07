@@ -37,7 +37,7 @@
   </section>
 
   <section
-    *ngElse="!company.enabled"
+    *ngIf="!company.enabled"
     class="w-full h-full flex flex-col gap-4 items-center justify-center bg-50"
   >
     <div

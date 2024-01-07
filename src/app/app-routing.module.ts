@@ -12,12 +12,10 @@ const routes: Routes = [
   {
     path: 'company/auth/register',
     component: RegisterComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'company/auth/login',
     component: LoginComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'company/auth/confirm-account/:token',
@@ -36,6 +34,7 @@ const routes: Routes = [
   {
     path: 'offers',
     component: HomeComponent,
+    // canActivate: [AuthGuard],
   },
   {
     path: '',
@@ -45,6 +44,7 @@ const routes: Routes = [
   {
     path: 'offers/new',
     component: OfferFormComponent,
+    // canActivate: [AuthGuard],
   },
   {
     path: 'offers/:id',
