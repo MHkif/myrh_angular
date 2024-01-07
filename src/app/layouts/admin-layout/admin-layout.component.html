@@ -1,5 +1,4 @@
 
-
 <ng-container *ngIf="company; else notEnabled">
   <section
     *ngIf="company.enabled"
@@ -16,7 +15,7 @@
         <section class="hideScroll w-full overflow-y-auto pb-20">
           <ng-content select="[admin-content]"></ng-content>
         </section>
-        <ng-content selct="[search-bar]"></ng-content>
+        <ng-content select="[search-bar]"></ng-content>
       </div>
     </main>
     <!-- End Content -->
@@ -80,6 +79,8 @@
       <div></div>
       <div class="text-lg">No Company is Authenticated</div>
       <!-- <a class="text-white p-2 bg-purple-600 rounded-md">Send Link</a> -->
+    </div>
+  </section>
 
 
 <section class=" max-h-screen bg-gray-50 overflow-hidden">
@@ -96,5 +97,9 @@
       </section>
       <ng-content select="[search-bar]"></ng-content>
     </div>
-  </section>
+
+
+
+</main>
+</section>
 </ng-template>
