@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './auth/register/register.component';
@@ -7,48 +8,50 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './service/auth.guard';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
 import { AccountValidationComponent } from './account-validation/account-validation.component';
+import {AdminDashboardComponent} from "./features/admin/dashboard/admin-dashboard.component";
 
 const routes: Routes = [
   {
-    path: 'company/auth/register',
-    component: RegisterComponent,
+    path: 'company/auth/register', component: RegisterComponent, canActivate: [AuthGuard],
   },
   {
-    path: 'company/auth/login',
-    component: LoginComponent,
-  },
-  {
-    path: 'company/auth/confirm-account/:token',
-    component: AccountValidationComponent,
+    path: 'company/auth/login', component: LoginComponent, canActivate: [AuthGuard],
+
   },
 
   {
-    path: 'admin/auth/login',
-    component: LoginComponent,
+    path: 'admin/auth/login', component: LoginComponent,
   },
   {
-    path: 'admin/home',
-    component: LoginComponent,
+    path: 'admin/dashboard', component: AdminDashboardComponent,
+  },
+  {
+    path: 'admin/home', component: LoginComponent,
   },
 
   {
+
     path: 'offers',
     component: HomeComponent,
     // canActivate: [AuthGuard],
+
+    path: 'offers', component: HomeComponent,
+
   },
   {
-    path: '',
-    redirectTo: 'offers',
-    pathMatch: 'full',
+    path: '', redirectTo: 'offers', pathMatch: 'full',
   },
   {
+
     path: 'offers/new',
     component: OfferFormComponent,
     // canActivate: [AuthGuard],
+
+    path: 'offers/new', component: OfferFormComponent,
+
   },
   {
-    path: 'offers/:id',
-    component: OfferDetailComponent,
+    path: 'offers/:id', component: OfferDetailComponent,
   },
 ];
 
@@ -56,4 +59,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

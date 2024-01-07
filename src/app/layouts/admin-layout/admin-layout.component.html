@@ -1,18 +1,4 @@
-<style>
-  /* Hide scrollbar for WebKit-based browsers (Chrome, Safari, etc.) */
-  .hideScroll::-webkit-scrollbar {
-    display: none;
-  }
 
-  /* Hide scrollbar for IE, Edge, and Firefox */
-  .hideScroll {
-    /* IE and Edge */
-    -ms-overflow-style: none;
-
-    /* Firefox */
-    scrollbar-width: none;
-  }
-</style>
 
 <ng-container *ngIf="company; else notEnabled">
   <section
@@ -94,6 +80,21 @@
       <div></div>
       <div class="text-lg">No Company is Authenticated</div>
       <!-- <a class="text-white p-2 bg-purple-600 rounded-md">Send Link</a> -->
+
+
+<section class=" max-h-screen bg-gray-50 overflow-hidden">
+  <!-- Side Bar -->
+  <app-admin-side-bar />
+  <!-- End Side Bar -->
+
+  <!-- Content -->
+  <main class=" w-[calc(100%-3.5rem)] ml-auto max-h-screen flex flex-col">
+    <app-navbar/>
+    <div class="px-8 py-6 w-full flex flex-row min-h-screen gap-8">
+      <section class="hideScroll w-full overflow-y-auto pb-20">
+        <ng-content select="[admin-content]"></ng-content>
+      </section>
+      <ng-content select="[search-bar]"></ng-content>
     </div>
   </section>
 </ng-template>
