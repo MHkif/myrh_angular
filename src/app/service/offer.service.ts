@@ -12,6 +12,8 @@ export class OfferService {
   constructor(private http: HttpClient) {}
 
   public save(offer: Offer) {
+    const formData = new FormData();
+
     return this.http.post<Offer>(this.base_url, offer);
   }
 
