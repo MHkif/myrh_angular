@@ -37,6 +37,8 @@ import { AccountValidationComponent } from './account-validation/account-validat
 import {CandidatRegisterComponent} from "./features/candidat/auth/register/candidat-register.component";
 import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
 import { AdminOfferListComponent } from './shared/admin/admin-offer-list/admin-offer-list.component';
+import { JobSeekerLoginComponent } from './job-seeker-login/job-seeker-login.component';
+import { JobSeekerRegisterComponent } from './job-seeker-register/job-seeker-register.component';
 
 @NgModule({
   declarations: [
@@ -60,9 +62,8 @@ import { AdminOfferListComponent } from './shared/admin/admin-offer-list/admin-o
     AdminHomeComponent,
     AccountValidationComponent,
     AdminDashboardComponent,
-    AdminOfferListComponent,
+    AdminOfferListComponent
 
-    // Metarial
   ],
   imports: [
     BrowserModule,
