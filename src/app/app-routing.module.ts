@@ -4,7 +4,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { OfferFormComponent } from './offer/offer-form/offer-form.component';
 import { LoginComponent } from './auth/login/login.component';
-import { LoginComponent as JobSeekerLoginComponent } from './features/candidat/auth/login/login.component';
+import { JobSeekerLoginComponent  } from './features/candidat/auth/login/login.component';
 import { CandidatRegisterComponent } from './features/candidat/auth/register/candidat-register.component';
 
 import { AuthGuard } from './service/auth.guard';

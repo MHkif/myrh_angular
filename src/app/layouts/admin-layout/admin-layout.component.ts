@@ -24,7 +24,5 @@ export class AdminLayoutComponent implements OnInit {
       .select('auth')
       .subscribe((state) => (this.company = state.company));
     console.log('Company   : ', this.company);
-    
   }
- 
 }

@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate, OnInit {
   constructor(private router: Router, private store: Store<AppState>) {}
   ngOnInit(): void {
     this.store
-      .select('logging')
+      .select('auth')
       .subscribe((state) => (this.isLoggedIn = state.isLogged));
   }
 

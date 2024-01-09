@@ -10,6 +10,8 @@ import { CompanyService } from 'src/app/service/company.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/service/admin.service';
+import { registerStart, registerSuccess } from '../jobseeker/auth.action';
+import { JobSeekerService } from 'src/app/job-seeker.service';
 
 @Injectable()
 export class AuthEffect {
@@ -17,6 +19,7 @@ export class AuthEffect {
     private actions$: Actions,
     private companyService: CompanyService,
     private adminService: AdminService,
+
     private route: Router
   ) {}
 
@@ -29,7 +32,7 @@ export class AuthEffect {
             console.log('data :', data);
             const company = this.companyService.formatCompany(data);
             this.route.navigate(['/offers']);
-            return loginSuccess({ company });
+            return loginSuccess({ company: company, isLogged: true });
           })
         );
       })

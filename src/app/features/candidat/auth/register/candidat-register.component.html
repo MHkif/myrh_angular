@@ -1,11 +1,4 @@
 <auth-layout>
-  <div>
-    <h1
-    class="text-center h-4/5"
-    >
-      Candidate Sign up
-    </h1>
-  </div>
   <div
     auth-content
     class="z-20 w-full flex flex-col h-screen space-y-8 py-4 px-8 md:w-[65%]"
@@ -13,7 +6,7 @@
     <div class="flex items-center justify-end gap-4 w-full">
       <a
         href="#"
-        [routerLink]="['/company/auth/login']"
+        [routerLink]="['/jobSeeker/auth/login']"
         class="block text-md text-purple-600"
       >
         Already have an account , <span class="font-medium">Sign in</span> now !
@@ -24,35 +17,63 @@
       <form
         class="space-y-10 w-1/2"
         [formGroup]="signUpForm"
-        (ngSubmit)="$event.preventDefault(); onSubmit()"
+        (ngSubmit)="onSubmit()"
         id="form"
       >
         <div class="flex flex-col gap-3">
           <div class="flex flex-col gap-4 md:flex-row">
             <div class="space-y-2 w-full">
-              <label for="name" class="pl-1 font-medium">Company name</label>
+              <label for="first_name" class="pl-1 font-medium"
+                >First name</label
+              >
               <input
-                id="name"
-                name="name"
+                id="first_name"
+                name="first_name"
                 type="text"
-                autocomplete="name"
-                formControlName="name"
+                autocomplete="first_name"
+                formControlName="first_name"
                 [ngClass]="{
                   'border border-red-600 ring-red-600 focus:ring-red-600 focus:border-red-400 ':
-                    name_Error,
+                    first_name_Error,
                   'border border-purple-600  focus:ring-purple-600 focus:border-purple-400':
-                    !name_Error && signUpForm.get('confirmPassword')?.touched
+                    !first_name_Error && signUpForm.get('first_name')?.touched
                 }"
                 class="relative block w-full rounded-md border p-2.5 text-gray-900 ring-1 ring-outset ring-purple-600 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
-                placeholder="Company name"
+                placeholder="First name"
               />
 
               <p
-                *ngIf="name_Error"
-                id="name_Error"
+                *ngIf="first_name_Error"
+                id="first_name_Error"
                 class="mt-1 text-xs text-red-500"
               >
-                {{ name_Error }}
+                {{ first_name_Error }}
+              </p>
+            </div>
+            <div class="space-y-2 w-full">
+              <label for="last_name" class="pl-1 font-medium">Last name</label>
+              <input
+                id="last_name"
+                name="last_name"
+                type="text"
+                autocomplete="last_name"
+                formControlName="last_name"
+                [ngClass]="{
+                  'border border-red-600 ring-red-600 focus:ring-red-600 focus:border-red-400 ':
+                    last_name_Error,
+                  'border border-purple-600  focus:ring-purple-600 focus:border-purple-400':
+                    !last_name_Error && signUpForm.get('last_name')?.touched
+                }"
+                class="relative block w-full rounded-md border p-2.5 text-gray-900 ring-1 ring-outset ring-purple-600 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                placeholder="Last name"
+              />
+
+              <p
+                *ngIf="last_name_Error"
+                id="last_name_Error"
+                class="mt-1 text-xs text-red-500"
+              >
+                {{ last_name_Error }}
               </p>
             </div>
           </div>
@@ -68,7 +89,7 @@
                 'border border-red-600 ring-red-600 focus:ring-red-600 focus:border-red-400 ':
                   email_Error,
                 'border border-purple-600  focus:ring-purple-600 focus:border-purple-400':
-                  !email_Error && signUpForm.get('confirmPassword')?.touched
+                  !email_Error && signUpForm.get('email')?.touched
               }"
               class="relative block w-full rounded-md border p-2.5 text-gray-900 ring-1 ring-outset ring-purple-600 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
               placeholder="Enter Your Email"
@@ -95,8 +116,7 @@
                   'border border-red-600 ring-red-600 focus:ring-red-600 focus:border-red-400 ':
                     password_Error,
                   'border border-purple-600  focus:ring-purple-600 focus:border-purple-400':
-                    !password_Error &&
-                    signUpForm.get('confirmPassword')?.touched
+                    !password_Error && signUpForm.get('password')?.touched
                 }"
                 class="relative block w-full rounded-md border p-2.5 text-gray-900 ring-1 ring-outset ring-purple-600 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-orange-600 foucus:border-purple-400 sm:text-sm sm:leading-6"
                 placeholder="Password"
@@ -111,23 +131,9 @@
             </div>
             <div class="space-y-2">
               <label for="password" class="pl-1 font-medium"
-              >Confirm password</label
+                >Confirm password</label
               >
-              <!-- <input
-                id="confirmPassword"
-                name="confirmPassword"
-                formControlName="confirmPassword"
-                type="password"
-                autocomplete="current-password"
-                [ngClass]="{
-                  'border-red-600  ring-red-600': confirm_pass_Error
-                }"
-                [ngClass]="{
-                  'border-purple-600 ': !confirm_pass_Error
-                }"
-                class="relative block w-full rounded-md border border-purple-500 p-2.5 text-gray-900 ring-1 ring-outset ring-purple-600 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-purple-600 foucus:border-purple-400 sm:text-sm sm:leading-6"
-                placeholder="Confirm Password"
-              /> -->
+
               <input
                 id="confirmPassword"
                 name="confirmPassword"
@@ -157,6 +163,7 @@
 
         <div>
           <button
+            type="submit"
             class="group relative flex w-full justify-center rounded-md bg-purple-700 px-3 py-2.5 text-md font-semibold text-white hover:text-purple-600 hover:bg-white hover:border hover:border-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
           >
             Sign up
@@ -166,4 +173,3 @@
     </div>
   </div>
 </auth-layout>
-

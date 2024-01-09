@@ -34,11 +34,13 @@ import { OfferDetailComponent } from './offer/offer-detail/offer-detail.componen
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AccountValidationComponent } from './account-validation/account-validation.component';
-import {CandidatRegisterComponent} from "./features/candidat/auth/register/candidat-register.component";
+import { CandidatRegisterComponent } from './features/candidat/auth/register/candidat-register.component';
 import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
 import { AdminOfferListComponent } from './shared/admin/admin-offer-list/admin-offer-list.component';
-import { JobSeekerLoginComponent } from './job-seeker-login/job-seeker-login.component';
-import { JobSeekerRegisterComponent } from './job-seeker-register/job-seeker-register.component';
+import { CommonModule } from '@angular/common';
+import { JobSeekerLoginComponent } from './features/candidat/auth/login/login.component';
+import { JobSeekerEffect } from './store/jobseeker/auth.effect';
+import { JobSeekerAuthReducer } from './store/jobseeker/auth.reducer';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,6 @@ import { JobSeekerRegisterComponent } from './job-seeker-register/job-seeker-reg
     OfferCardComponent,
     RegisterComponent,
     LoginComponent,
-    AuthLayoutComponent,
     AdminLayoutComponent,
     CandidatRegisterComponent,
     AdminSideBarComponent,
@@ -62,17 +63,19 @@ import { JobSeekerRegisterComponent } from './job-seeker-register/job-seeker-reg
     AdminHomeComponent,
     AccountValidationComponent,
     AdminDashboardComponent,
-    AdminOfferListComponent
-
+    JobSeekerLoginComponent,
+    AdminOfferListComponent,
+    AuthLayoutComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(appReducer),
     StoreModule.forFeature(AUTH_STATE_NAME, AuthReducer),
-    EffectsModule.forRoot([CompanyEffect, AuthEffect]),
+    EffectsModule.forRoot([CompanyEffect, AuthEffect, JobSeekerEffect]),
     StoreDevtoolsModule.instrument({
       logOnly: !isDevMode(),
     }),
