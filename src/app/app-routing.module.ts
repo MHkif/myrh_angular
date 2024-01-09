@@ -7,9 +7,12 @@ import { LoginComponent } from './auth/login/login.component';
 import { JobSeekerLoginComponent  } from './features/candidat/auth/login/login.component';
 import { CandidatRegisterComponent } from './features/candidat/auth/register/candidat-register.component';
 
+
 import { AuthGuard } from './service/auth.guard';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
-import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
+import { AccountValidationComponent } from './account-validation/account-validation.component';
+import {AdminDashboardComponent} from "./features/admin/dashboard/admin-dashboard.component";
+
 
 const routes: Routes = [
   {
@@ -29,12 +32,14 @@ const routes: Routes = [
     component: JobSeekerLoginComponent,
   },
   {
-    path: 'admin/auth/login',
-    component: LoginComponent,
+
+    path: 'company/auth/confirm-account/:token',
+    component: AccountValidationComponent,
   },
+
   {
     path: 'admin/dashboard',
-    component: AdminDashboardComponent,
+    component: AdminDashboardComponent
   },
   {
     path: 'admin/home',
@@ -44,6 +49,7 @@ const routes: Routes = [
     path: 'offers',
     component: HomeComponent,
     // canActivate: [AuthGuard],
+
   },
   {
     path: '',
