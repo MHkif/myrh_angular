@@ -12,6 +12,8 @@ import { AuthGuard } from './service/auth.guard';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
 import { AccountValidationComponent } from './account-validation/account-validation.component';
 import {AdminDashboardComponent} from "./features/admin/dashboard/admin-dashboard.component";
+import {CompanyDashboardComponent} from "./features/company/dashboard/company-dashboard.component";
+import {CandidatsInsightsComponent} from "./features/company/candidats-insights/candidats-insights.component";
 
 
 const routes: Routes = [
@@ -65,6 +67,16 @@ const routes: Routes = [
     path: 'offers/:id',
     component: OfferDetailComponent,
   },
+  {
+    path:'company/dashboard',
+    component:CompanyDashboardComponent,
+    children:[
+      {
+        path:'candidates-insights',
+        component:CandidatsInsightsComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

@@ -41,6 +41,8 @@ import { CommonModule } from '@angular/common';
 import { JobSeekerLoginComponent } from './features/candidat/auth/login/login.component';
 import { JobSeekerEffect } from './store/jobseeker/auth.effect';
 import { JobSeekerAuthReducer } from './store/jobseeker/auth.reducer';
+import { CompanyDashboardComponent } from './features/company/dashboard/company-dashboard.component';
+import { CandidatsInsightsComponent } from './features/company/candidats-insights/candidats-insights.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { JobSeekerAuthReducer } from './store/jobseeker/auth.reducer';
     JobSeekerLoginComponent,
     AdminOfferListComponent,
     AuthLayoutComponent,
+    CompanyDashboardComponent,
+    CandidatsInsightsComponent,
   ],
   imports: [
     CommonModule,
