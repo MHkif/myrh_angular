@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Offer, PageOffers } from '../model/offer.model';
+import {JobSeekerOfferInsightsResponse, Offer, PageOffers} from '../model/offer.model';
 import { Observable } from 'rxjs';
 import {environment} from "../../environments/environment";
 
@@ -45,5 +45,9 @@ export class OfferService {
 
   changeVisibility(offerId: number, value: string) {
     return this.http.patch(this.base_url + '/' + offerId + '/visibility/'+value,null);
+  }
+
+  getAllCandidatesOfferInsights(companyId: number):Observable<Array<JobSeekerOfferInsightsResponse>> {
+    return this.http.get<Array<JobSeekerOfferInsightsResponse>>(this.base_url + '/insights/jobSeeker/company/'+companyId);
   }
 }

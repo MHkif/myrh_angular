@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {OfferService} from "../../../service/offer.service";
 
 @Component({
   selector: 'app-company-dashboard',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./company-dashboard.component.css']
 })
 export class CompanyDashboardComponent {
-  //TODO :   PDR-46-avoir-des-statistiques-des-offres-demploi-par-candidats
+  // :   PDR-46-avoir-des-statistiques-des-offres-demploi-par-candidats
   current!: string;
+
 
 }

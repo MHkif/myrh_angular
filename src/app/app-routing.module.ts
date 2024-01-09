@@ -13,7 +13,7 @@ import { OfferDetailComponent } from './offer/offer-detail/offer-detail.componen
 import { AccountValidationComponent } from './account-validation/account-validation.component';
 import {AdminDashboardComponent} from "./features/admin/dashboard/admin-dashboard.component";
 import {CompanyDashboardComponent} from "./features/company/dashboard/company-dashboard.component";
-import {CandidatsInsightsComponent} from "./features/company/candidats-insights/candidats-insights.component";
+import {CandidatesInsightsComponent} from "./features/company/candidats-insights/candidates-insights.component";
 
 
 const routes: Routes = [
@@ -73,7 +73,7 @@ const routes: Routes = [
     children:[
       {
         path:'candidates-insights',
-        component:CandidatsInsightsComponent
+        component:CandidatesInsightsComponent
       }
     ]
   }
