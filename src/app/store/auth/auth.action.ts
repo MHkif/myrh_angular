@@ -29,7 +29,7 @@ export const loginStart = createAction(
 
 export const loginSuccess = createAction(
   LOGIN_SUCCESS,
-  props<{ company: Company }>()
+  props<{ company: Company; isLogged: boolean }>()
 );
 
 export const signUpStart = createAction(

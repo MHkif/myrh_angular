@@ -4,6 +4,10 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { OfferFormComponent } from './offer/offer-form/offer-form.component';
 import { LoginComponent } from './auth/login/login.component';
+import { JobSeekerLoginComponent  } from './features/candidat/auth/login/login.component';
+import { CandidatRegisterComponent } from './features/candidat/auth/register/candidat-register.component';
+
+
 import { AuthGuard } from './service/auth.guard';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
 import { AccountValidationComponent } from './account-validation/account-validation.component';
@@ -12,22 +16,30 @@ import {AdminDashboardComponent} from "./features/admin/dashboard/admin-dashboar
 
 const routes: Routes = [
   {
-    path: 'company/auth/register', component: RegisterComponent,
-    // canActivate: [AuthGuard],
+    path: 'company/auth/register',
+    component: RegisterComponent,
   },
   {
-    path: 'company/auth/login', component: LoginComponent,
-    // canActivate: [AuthGuard],
+    path: 'company/auth/login',
+    component: LoginComponent,
+  },
+  {
+    path: 'jobSeeker/auth/register',
+    component: CandidatRegisterComponent,
+  },
+  {
+    path: 'jobSeeker/auth/login',
+    component: JobSeekerLoginComponent,
+  },
+  {
 
-  },
-  {
     path: 'company/auth/confirm-account/:token',
     component: AccountValidationComponent,
   },
 
   {
-    path: 'admin/auth/login',
-    component: LoginComponent,
+    path: 'admin/dashboard',
+    component: AdminDashboardComponent
   },
   {
     path: 'admin/home',
@@ -36,6 +48,8 @@ const routes: Routes = [
   {
     path: 'offers',
     component: HomeComponent,
+    // canActivate: [AuthGuard],
+
   },
   {
     path: '',

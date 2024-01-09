@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { initialState, initialLogging, adminState } from './auth.state';
+import { initialState, adminState } from './auth.state';
 import {
   adminLoginStart,
   adminLoginSuccess,
@@ -14,6 +14,7 @@ const _authReducer = createReducer(
     return {
       ...state,
       company: action.company,
+      isLogged: true,
     };
   })
 );
@@ -29,22 +30,8 @@ const _adminReducer = createReducer(
   })
 );
 
-const _loggedReducer = createReducer(
-  initialLogging,
-  on(loginSuccess, (state, action) => {
-    console.log('action : ', action);
-    return {
-      ...state,
-      isLogged: true,
-    };
-  })
-);
 export function AuthReducer(state: any, action: any) {
   return _authReducer(state, action);
-}
-
-export function LoggingReducer(state: any, action: any) {
-  return _loggedReducer(state, action);
 }
 
 export function AdminReducer(state: any, action: any) {

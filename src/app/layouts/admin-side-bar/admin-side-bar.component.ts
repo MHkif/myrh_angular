@@ -16,11 +16,12 @@ export class AdminSideBarComponent implements OnInit {
   ngOnInit(): void {
     this.store
       .select('auth')
-      .subscribe((state) => (this.company = state.company));
+      .subscribe(
+        (state) => (
+          (this.company = state.company), (this.isLogged = state.isLogged)
+        )
+      );
     console.log('company : ', this.company);
-    this.store
-      .select('logging')
-      .subscribe((state) => (this.isLogged = state.isLogged));
     console.log('isLogged  : ', this.isLogged);
   }
 }

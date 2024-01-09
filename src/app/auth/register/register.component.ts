@@ -4,6 +4,7 @@ import { Company } from '../../model/company.model';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { beginRegister } from '../../store/company/company.action';
+import { AppState } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { beginRegister } from '../../store/company/company.action';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private builder: FormBuilder, private store: Store) {}
+  constructor(private builder: FormBuilder, private store: Store<AppState>) {}
   signUpForm!: FormGroup;
   name_Error: string = '';
   email_Error: string = '';
@@ -64,7 +65,7 @@ export class RegisterComponent implements OnInit {
         email: this.signUpForm.value.email,
         password: this.signUpForm.value.password,
         image: null,
-        enabled: false
+        enabled: false,
       };
 
       if (this.signUpForm.value.confirmPassword === company.password) {

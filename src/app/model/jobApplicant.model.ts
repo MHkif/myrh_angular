@@ -1,3 +1,5 @@
+import { JobSeeker } from "./jobSeeker.model";
+
 export interface JobApplicant {
   JobApplicantId: JobApplicantId;
   createdDate: '2024-01-03T00:21:19.7076409';
@@ -6,15 +8,6 @@ export interface JobApplicant {
   isViewed: boolean;
 }
 
-export interface JobSeeker {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  image: string;
-  enabled: boolean;
-}
 
 export interface JobApplicantId {
   jobSeeker_id: number | Blob | string;
