@@ -43,6 +43,7 @@ import { JobSeekerEffect } from './store/jobseeker/auth.effect';
 import { JobSeekerAuthReducer } from './store/jobseeker/auth.reducer';
 import { CompanyDashboardComponent } from './features/company/dashboard/company-dashboard.component';
 import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
+import { JobApplicantsComponent } from './features/company/job-applicants/job-applicants.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { CandidatesInsightsComponent } from './features/company/candidats-insigh
     AuthLayoutComponent,
     CompanyDashboardComponent,
     CandidatesInsightsComponent,
+    JobApplicantsComponent,
   ],
   imports: [
     CommonModule,

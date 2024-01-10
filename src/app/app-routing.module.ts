@@ -4,17 +4,16 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { OfferFormComponent } from './offer/offer-form/offer-form.component';
 import { LoginComponent } from './auth/login/login.component';
-import { JobSeekerLoginComponent  } from './features/candidat/auth/login/login.component';
+import { JobSeekerLoginComponent } from './features/candidat/auth/login/login.component';
 import { CandidatRegisterComponent } from './features/candidat/auth/register/candidat-register.component';
-
 
 import { AuthGuard } from './service/auth.guard';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
 import { AccountValidationComponent } from './account-validation/account-validation.component';
-import {AdminDashboardComponent} from "./features/admin/dashboard/admin-dashboard.component";
-import {CompanyDashboardComponent} from "./features/company/dashboard/company-dashboard.component";
-import {CandidatesInsightsComponent} from "./features/company/candidats-insights/candidates-insights.component";
-
+import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
+import { CompanyDashboardComponent } from './features/company/dashboard/company-dashboard.component';
+import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
+import { JobApplicantsComponent } from './features/company/job-applicants/job-applicants.component';
 
 const routes: Routes = [
   {
@@ -34,14 +33,13 @@ const routes: Routes = [
     component: JobSeekerLoginComponent,
   },
   {
-
     path: 'company/auth/confirm-account/:token',
     component: AccountValidationComponent,
   },
 
   {
     path: 'admin/dashboard',
-    component: AdminDashboardComponent
+    component: AdminDashboardComponent,
   },
   {
     path: 'admin/home',
@@ -51,7 +49,6 @@ const routes: Routes = [
     path: 'offers',
     component: HomeComponent,
     // canActivate: [AuthGuard],
-
   },
   {
     path: '',
@@ -68,15 +65,19 @@ const routes: Routes = [
     component: OfferDetailComponent,
   },
   {
-    path:'company/dashboard',
-    component:CompanyDashboardComponent,
-    children:[
+    path: 'company/dashboard',
+    component: CompanyDashboardComponent,
+    children: [
       {
-        path:'candidates-insights',
-        component:CandidatesInsightsComponent
-      }
-    ]
-  }
+        path: 'candidates-insights',
+        component: CandidatesInsightsComponent,
+      },
+      {
+        path: 'jobApplicants',
+        component: JobApplicantsComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({

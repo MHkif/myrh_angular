@@ -24,24 +24,23 @@ export interface PageOffers {
   empty: boolean;
 }
 
-
 export enum OfferStatus {
-  ACCEPTED="ACCEPTED",
-  PENDING="PENDING",
-  REFUSED="REFUSED"
+  ACCEPTED = 'ACCEPTED',
+  PENDING = 'PENDING',
+  REFUSED = 'REFUSED',
 }
 
 export interface JobSeekerOfferInsightsResponse {
-  candidateOffersApplyCollection: CandidateOffersApplyCollection[]
-  jobSeeker_id: number
-  jobSeeker_name: any
-  nb_job_accepted: number
-  nb_job_refused: number
-  nb_job_waiting: number
-  nb_job_in_process: number
+  candidateOffersApplyCollection: CandidateOffersApplyCollection[];
+  jobSeeker_id: number;
+  jobSeeker_name: any;
+  nb_job_accepted: number;
+  nb_job_refused: number;
+  nb_job_waiting: number;
+  nb_job_in_process: number;
 }
 
 export interface CandidateOffersApplyCollection {
-  offerId: number
-  offerTitle: string
+  offerId: number;
+  offerTitle: string;
 }
