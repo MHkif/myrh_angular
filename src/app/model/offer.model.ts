@@ -30,3 +30,18 @@ export enum OfferStatus {
   PENDING="PENDING",
   REFUSED="REFUSED"
 }
+
+export interface JobSeekerOfferInsightsResponse {
+  candidateOffersApplyCollection: CandidateOffersApplyCollection[]
+  jobSeeker_id: number
+  jobSeeker_name: any
+  nb_job_accepted: number
+  nb_job_refused: number
+  nb_job_waiting: number
+  nb_job_in_process: number
+}
+
+export interface CandidateOffersApplyCollection {
+  offerId: number
+  offerTitle: string
+}
