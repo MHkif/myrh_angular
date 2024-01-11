@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { catchError, map } from 'rxjs';
-import { Company } from 'src/app/model/company.model';
-import { CompanyService } from 'src/app/service/company.service';
-import { AppState } from 'src/app/store/app.state';
+import { Company } from '../../model/company.model';
+import { CompanyService } from '../../service/company.service';
+import { AppState } from '../../store/state/app.state';
 
 @Component({
   selector: 'app-admin-layout',
@@ -22,7 +22,13 @@ export class AdminLayoutComponent implements OnInit {
   ngOnInit(): void {
     this.store
       .select('auth')
-      .subscribe((state) => (this.company = state.company));
+      .subscribe(
+        (state) => (
+          (this.company = state.object as Company),
+          console.log('Object   : ', state.object)
+        )
+      );
+
     console.log('Company   : ', this.company);
   }
 }

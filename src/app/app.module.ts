@@ -17,16 +17,13 @@ import { SearchBarComponent } from './layouts/search-bar/search-bar.component';
 import { OfferHolderComponent } from './offer/offer-holder/offer-holder.component';
 import { OfferFormComponent } from './offer/offer-form/offer-form.component';
 import { StoreModule } from '@ngrx/store';
-import { companyReducer } from './store/company/company.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CompanyEffect } from './store/company/company.effect';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { appReducer } from './store/app.state';
-import { AUTH_STATE_NAME } from './store/auth/auth.selector';
-import { AuthReducer } from './store/auth/auth.reducer';
-import { AuthEffect } from './store/auth/auth.effect';
+import { appReducer } from './store/state/app.state';
+
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthGuard } from './service/auth.guard';
 import { LayoutComponent } from './layouts/layout/layout.component';
@@ -39,8 +36,6 @@ import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashbo
 import { AdminOfferListComponent } from './shared/admin/admin-offer-list/admin-offer-list.component';
 import { CommonModule } from '@angular/common';
 import { JobSeekerLoginComponent } from './features/candidat/auth/login/login.component';
-import { JobSeekerEffect } from './store/jobseeker/auth.effect';
-import { JobSeekerAuthReducer } from './store/jobseeker/auth.reducer';
 import { CompanyDashboardComponent } from './features/company/dashboard/company-dashboard.component';
 import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
 
@@ -48,9 +43,10 @@ import { JobApplicantsComponent } from './features/company/job-applicants/job-ap
 
 import { JobSeekerNavbarComponent } from './shared/job-seeker/job-seeker-navbar/job-seeker-navbar.component';
 import { JobSeekerDashboardComponent } from './features/candidat/dashboard/job-seeker-dashboard.component';
-import {
-  JobSeekerApplicationSocketConfigService
-} from "./service/jobSeeker/job-application-config/job-seeker-application-socket-config.service";
+import { JobSeekerApplicationSocketConfigService } from './service/jobSeeker/job-application-config/job-seeker-application-socket-config.service';
+import { AdminEffect } from './store/admin/admin.effect';
+import { ApplicantEffect } from './store/applicant/applicant.effect';
+import { SideBarComponent } from './layouts/side-bar/side-bar.component';
 
 
 @NgModule({
@@ -82,6 +78,7 @@ import {
     JobApplicantsComponent,
     JobSeekerNavbarComponent,
     JobSeekerDashboardComponent,
+    SideBarComponent
   ],
   imports: [
     CommonModule,
@@ -90,8 +87,7 @@ import {
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(appReducer),
-    StoreModule.forFeature(AUTH_STATE_NAME, AuthReducer),
-    EffectsModule.forRoot([CompanyEffect, AuthEffect, JobSeekerEffect]),
+    EffectsModule.forRoot([CompanyEffect, AdminEffect, ApplicantEffect]),
     StoreDevtoolsModule.instrument({
       logOnly: !isDevMode(),
     }),
@@ -100,10 +96,7 @@ import {
     MatInputModule,
     BrowserAnimationsModule,
   ],
-  providers: [
-    AuthGuard,
-    JobSeekerApplicationSocketConfigService
-  ],
+  providers: [AuthGuard, JobSeekerApplicationSocketConfigService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Offer } from 'src/app/model/offer.model';
 import { OfferService } from 'src/app/service/offer.service';
-import { AppState } from '../../store/app.state';
+import { AppState } from '../../store/state/app.state';
 
 @Component({
   selector: 'app-offer-form',
@@ -20,7 +20,7 @@ export class OfferFormComponent implements OnInit {
     private store: Store<AppState>
   ) {}
   ngOnInit(): void {
-    this.showModal = true;
+    this.showModal = false;
     this.offerForm = this.builder.group({
       category: this.builder.control(
         '',

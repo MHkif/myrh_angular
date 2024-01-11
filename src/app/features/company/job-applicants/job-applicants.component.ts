@@ -6,9 +6,9 @@ import {
   CompanyJobApplicantReq,
   JobApplicant,
   JobApplicantStatus,
-} from 'src/app/model/jobApplicant.model';
-import { JobApplicantService } from 'src/app/service/job-applicant.service';
-import { AppState } from 'src/app/store/app.state';
+} from '../../../model/jobApplicant.model';
+import { JobApplicantService } from '../../../service/job-applicant.service';
+import { AppState } from '../../../store/state/app.state';
 
 @Component({
   selector: 'app-job-applicants',

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 import { ResponseHttp } from './model/responseData.model';
 import { JobSeeker, PageJobSeeker } from './model/jobSeeker.model';
 

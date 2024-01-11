@@ -6,8 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/app.state';
-import { loginStart } from '../../store/auth/auth.action';
+import { AppState } from '../../store/state/app.state';
+import { company_loginStart } from '../../store/company/company.action';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
     if (this.loginForm.valid) {
-      this.store.dispatch(loginStart({ email, password }));
+      this.store.dispatch(company_loginStart({ email, password }));
     } else {
       if (this.loginForm?.get('email')?.hasError('required')) {
         this.email_Error = 'Email is required.';

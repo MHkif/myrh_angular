@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { JobSeeker } from 'src/app/model/jobSeeker.model';
-import { AppState } from 'src/app/store/app.state';
-import { registerStart } from 'src/app/store/jobseeker/auth.action';
+import { AppState } from '../../../../store/state/app.state';
+import { JobSeeker } from '../../../../model/jobSeeker.model';
+import { applicantStartRegister } from '../../../../store/applicant/applicant.action';
 
 @Component({
   selector: 'app-candidat-register',
@@ -74,7 +74,7 @@ export class CandidatRegisterComponent {
       };
 
       if (this.signUpForm.value.confirmPassword === jobSeeker.password) {
-        this.store.dispatch(registerStart({ jobSeeker: jobSeeker }));
+        this.store.dispatch(applicantStartRegister({ jobSeeker: jobSeeker }));
       } else {
         this.confirm_pass_Error = 'Mismatch Password';
       }

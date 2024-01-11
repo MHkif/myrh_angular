@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Company, CompanyModel } from '../../model/company.model';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/app.state';
+import { AppState } from '../../store/state/app.state';
 
 @Component({
   selector: 'app-admin-side-bar',
@@ -18,10 +18,12 @@ export class AdminSideBarComponent implements OnInit {
       .select('auth')
       .subscribe(
         (state) => (
-          (this.company = state.company), (this.isLogged = state.isLogged)
+          (this.company = state.object as Company),
+          (this.isLogged = state.isLogged),
+          console.log('Object : ', state.object)
         )
       );
-    console.log('company : ', this.company);
-    console.log('isLogged  : ', this.isLogged);
+    console.log('Company Side bar: ', this.company);
+    console.log('isLogged Side bar : ', this.isLogged);
   }
 }
