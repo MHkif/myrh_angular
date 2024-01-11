@@ -14,6 +14,7 @@ import { AccountValidationComponent } from './account-validation/account-validat
 import {AdminDashboardComponent} from "./features/admin/dashboard/admin-dashboard.component";
 import {CompanyDashboardComponent} from "./features/company/dashboard/company-dashboard.component";
 import {CandidatesInsightsComponent} from "./features/company/candidats-insights/candidates-insights.component";
+import {JobSeekerDashboardComponent} from "./features/candidat/dashboard/job-seeker-dashboard.component";
 
 
 const routes: Routes = [
@@ -21,9 +22,13 @@ const routes: Routes = [
     path: 'company/auth/register',
     component: RegisterComponent,
   },
+
   {
     path: 'company/auth/login',
     component: LoginComponent,
+  },{
+    path: 'jobSeeker/dashboard',
+    component: JobSeekerDashboardComponent
   },
   {
     path: 'jobSeeker/auth/register',
