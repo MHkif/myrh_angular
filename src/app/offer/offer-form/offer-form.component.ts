@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { Offer } from 'src/app/model/offer.model';
 import { OfferService } from 'src/app/service/offer.service';
+import { AppState } from '../../store/app.state';
 
 @Component({
   selector: 'app-offer-form',
@@ -10,11 +12,15 @@ import { OfferService } from 'src/app/service/offer.service';
 })
 export class OfferFormComponent implements OnInit {
   offerForm!: FormGroup;
+  showModal!: boolean;
+
   constructor(
     private builder: FormBuilder,
-    private offerService: OfferService
+    private offerService: OfferService,
+    private store: Store<AppState>
   ) {}
   ngOnInit(): void {
+    this.showModal = true;
     this.offerForm = this.builder.group({
       category: this.builder.control(
         '',
@@ -49,30 +55,6 @@ export class OfferFormComponent implements OnInit {
         '',
         Validators.compose([Validators.required])
       ),
-      // first_name: this.builder.control(
-      //   '',
-      //   Validators.compose([Validators.required])
-      // ),
-      // last_name: this.builder.control(
-      //   '',
-      //   Validators.compose([Validators.required])
-      // ),
-      // status_publisher: this.builder.control(
-      //   '',
-      //   Validators.compose([Validators.required])
-      // ),
-      // email: this.builder.control(
-      //   '',
-      //   Validators.compose([Validators.required])
-      // ),
-      // telephone: this.builder.control(
-      //   '',
-      //   Validators.compose([Validators.required])
-      // ),
-      // image: this.builder.control(
-      //   '',
-      //   Validators.compose([Validators.required])
-      // ),
     });
   }
   // uploadFile(event: any) {
@@ -106,12 +88,16 @@ export class OfferFormComponent implements OnInit {
           alert(JSON.stringify(res));
         },
         error: (err: any) => {
-          console.error(err);
-          alert('Error  : ' + err);
+          console.error('Error : ', err.error);
+          this.showModal = true;
         },
       });
     } else {
       alert('not submitted');
     }
+  }
+
+  toggleModal() {
+    this.showModal = !this.showModal;
   }
 }

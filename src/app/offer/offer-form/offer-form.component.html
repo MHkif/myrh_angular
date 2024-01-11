@@ -1,6 +1,6 @@
 <div class="p-3">
   <a
-  [routerLink]="['/offers']"
+    [routerLink]="['/offers']"
     class="group inline-flex rounded-md bg-purple-700 px-3 md:px-4 py-2 text-md font-semibold text-white hover:text-purple-600 hover:bg-white border hover:border-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
   >
     <svg
@@ -14,7 +14,143 @@
     </svg>
   </a>
 </div>
+<!-- Subscription Modal -->
+<div *ngIf="showModal" class="opacity-75 fixed inset-0 z-40 bg-black"></div>
 
+<div
+  *ngIf="showModal"
+  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+>
+  <div class="relative w-auto my-6 mx-auto max-w-2xl">
+    <!--content-->
+
+    <!--header-->
+
+    <!--body-->
+
+    <body class="font-sans rounded-3xl bg-gray-100">
+      <div class="h-full w-full  flex justify-center items-center">
+        <!-- <div class=""> -->
+          <div class="flex flex-row ">
+            <!-- Freemium Card -->
+            <div
+              class="w-full flex flex-col gap-3 p-8 bg-white text-center rounded-3xl shadow-xl"
+            >
+              <div class="text-black font-semibold text-2xl">Freemium</div>
+              <p class=" ">
+                <span class="text-3xl font-semibold">3</span>
+                <span class="text-gray-400 font-medium">/ offers</span>
+              </p>
+              <hr class="border-1" />
+              <div class="flex flex-col gap-3">
+                <p class="font-semibold text-gray-400 text-left">
+                  <span class="material-icons align-middle"> done </span>
+                  <span class="pl-2">
+                    Get started with <span class="text-black">Freemium</span>
+                  </span>
+                </p>
+
+                <p class="font-semibold text-gray-400 text-left">
+                  <span class="material-icons align-middle"> done </span>
+                  <span class="pl-2">
+                    <span class="text-black">3 </span> offers
+                  </span>
+                </p>
+
+                <a href="#" class="">
+                  <p
+                    class="w-full inline-flex justify-center rounded-md bg-purple-700 px-6 py-2.5 text-md font-medium text-white hover:text-purple-600 hover:bg-white border border-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+                  >
+                    <span class="font-medium"> Choose Plan </span>
+                    <span class="pl-2 material-icons align-middle text-sm">
+                      east
+                    </span>
+                  </p>
+                </a>
+              </div>
+            </div>
+            <!-- Premium Card -->
+            <div
+              class="w-full flex flex-col gap-3 p-8 bg-gray-900 text-center rounded-3xl text-white border-4 shadow-xl border-white transform scale-110"
+            >
+              <h1 class="text-white font-semibold text-2xl">Premium</h1>
+              <p class="tracking-wide">
+                <span class="text-gray-400 align-top">$ </span>
+                <span class="text-3xl font-semibold">100</span>
+                <span class="text-gray-400 font-medium">/ Unlimited</span>
+              </p>
+              <hr class="border-1" />
+              <div class="flex flex-col gap-3">
+                <p class="font-semibold text-gray-400 text-left">
+                  <span class="material-icons align-middle"> done </span>
+                  <span class="pl-2">
+                    All features in <span class="text-white">Premium</span>
+                  </span>
+                </p>
+
+                <p class="font-semibold text-gray-400 text-left">
+                  <span class="material-icons align-middle"> done </span>
+                  <span class="pl-2">
+                    <span class="text-white">Unlimited</span> offers
+                  </span>
+                </p>
+                <a href="#" class="">
+                  <p
+                    class="w-full inline-flex justify-center rounded-md bg-purple-700 px-6 py-2.5 text-md font-medium text-white hover:text-purple-600 hover:bg-white border border-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+                  >
+                    <span class="font-medium"> Choose Plan </span>
+                    <span class="pl-2 material-icons align-middle text-sm">
+                      east
+                    </span>
+                  </p>
+                </a>
+              </div>
+            </div>
+            <!-- Basic Card -->
+            <div
+              class="w-full flex flex-col gap-3 p-8 bg-white text-center rounded-3xl shadow-xl"
+            >
+              <h1 class="font-semibold text-2xl">Basic</h1>
+              <p class="tracking-wide">
+                <span class="text-gray-400 align-top">$ </span>
+                <span class="text-3xl font-semibold">50</span>
+                <span class="text-gray-400 font-medium">/ 10 offers</span>
+              </p>
+              <hr class="border-1" />
+              <div class="flex flex-col gap-3">
+                <p class="font-semibold text-gray-400 text-left">
+                  <span class="material-icons align-middle"> done </span>
+                  <span class="pl-2">
+                    All features in <span class="text-black">Basic</span>
+                  </span>
+                </p>
+
+                <p class="font-semibold text-gray-400 text-left">
+                  <span class="material-icons align-middle"> done </span>
+                  <span class="pl-2">
+                    <span class="text-black">1O</span> offers
+                  </span>
+                </p>
+
+                <a href="#" class="">
+                  <p
+                    class="w-full inline-flex justify-center rounded-md bg-purple-700 px-6 py-2.5 text-md font-medium text-white hover:text-purple-600 hover:bg-white border border-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+                  >
+                    <span class="font-medium"> Choose Plan </span>
+                    <span class="pl-2 material-icons align-middle text-sm">
+                      east
+                    </span>
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+    </body>
+  </div>
+</div>
+<!--  -->
 <section class="p-8 max-w-screen min-h-screen flex flex-col items-center gap-8">
   <form
     [formGroup]="offerForm"
