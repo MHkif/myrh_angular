@@ -1,7 +1,21 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
+
+  "files": [
+    "src/polyfills.ts"
+  ],
+
+  "include": [
+    "src/polyfills.ts"
+  ],
   "compilerOptions": {
+    "paths": {
+      "sockjs-client": ["node_modules/sockjs-client/dist/sockjs.min.js"]
+    },
+    "types": [
+      "@types/stompjs"
+    ],
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
