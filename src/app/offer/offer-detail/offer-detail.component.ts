@@ -3,7 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { JobApplicantService } from 'src/app/service/job-applicant.service';
-import { JobApplicant } from 'src/app/model/jobApplicant.model';
+import {
+  JobApplicant,
+  JobApplicantRequsest,
+} from 'src/app/model/jobApplicant.model';
 import { Offer } from 'src/app/model/offer.model';
 import { OfferService } from 'src/app/service/offer.service';
 
@@ -64,7 +67,7 @@ export class OfferDetailComponent implements OnInit {
     console.log(typeof this.jobApplicantForm.value.resume);
   }
   OnApply(offer: Offer): void {
-    let jobApplicant: JobApplicant = {
+    let jobApplicant: JobApplicantRequsest = {
       JobApplicantId: {
         jobSeeker_id: 0,
         offer_id: offer.id,
@@ -78,9 +81,10 @@ export class OfferDetailComponent implements OnInit {
         enabled: false,
         image: '',
       },
+
       resume: this.jobApplicantForm.value.resume,
       isViewed: false,
-      createdDate: '2024-01-03T00:21:19.7076409',
+      createdDate: new Date(),
     };
 
     if (this.jobApplicantForm.valid) {
