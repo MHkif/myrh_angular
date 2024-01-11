@@ -38,8 +38,40 @@
     </div>
   </div>
 </nav>
-<div>
-  <div *ngFor="let notification of notifications">
-    {{ notification | json }}
-  </div>
+<div
+  *ngIf="newNotification && newNotificationObject"
+  class="container
+   absolute
+   animation-notification">
+  <a href="#" class="
+  ml-auto
+  flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div class="flex flex-col justify-between p-4 leading-normal">
+
+      <h4 class="font-bold ">New Notification </h4>
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        your application has been {{ newNotificationObject.status }}
+      </h5>
+      <span>
+        {{ newNotificationObject.message }}
+      </span>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        {{newNotificationObject.offer.title}}
+      </p>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        {{newNotificationObject.offer.company.name}}
+      </p>
+      <span class="text-sm text-gray-600 dark:text-gray-300">
+        {{ newNotificationObject.created_at | date: 'dd/MM/yyyy' }}
+      </span>
+    </div>
+  </a>
+
 </div>
+
+
+<!--<div>-->
+<!--  <div *ngFor="let notification of notifications">-->
+<!--    {{ notification | json }}-->
+<!--  </div>-->
+<!--</div>-->
