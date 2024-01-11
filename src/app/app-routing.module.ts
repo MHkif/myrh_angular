@@ -14,7 +14,7 @@ import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashbo
 import { CompanyDashboardComponent } from './features/company/dashboard/company-dashboard.component';
 import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
 import { JobApplicantsComponent } from './features/company/job-applicants/job-applicants.component';
-
+import { JobSeekerDashboardComponent } from './features/candidat/dashboard/job-seeker-dashboard.component';
 
 const routes: Routes = [
   {
@@ -25,9 +25,10 @@ const routes: Routes = [
   {
     path: 'company/auth/login',
     component: LoginComponent,
-  },{
+  },
+  {
     path: 'jobSeeker/dashboard',
-    component: JobSeekerDashboardComponent
+    component: JobSeekerDashboardComponent,
   },
   {
     path: 'jobSeeker/auth/register',
