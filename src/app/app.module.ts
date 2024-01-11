@@ -43,7 +43,15 @@ import { JobSeekerEffect } from './store/jobseeker/auth.effect';
 import { JobSeekerAuthReducer } from './store/jobseeker/auth.reducer';
 import { CompanyDashboardComponent } from './features/company/dashboard/company-dashboard.component';
 import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
+
 import { JobApplicantsComponent } from './features/company/job-applicants/job-applicants.component';
+
+import { JobSeekerNavbarComponent } from './shared/job-seeker/job-seeker-navbar/job-seeker-navbar.component';
+import { JobSeekerDashboardComponent } from './features/candidat/dashboard/job-seeker-dashboard.component';
+import {
+  JobSeekerApplicationSocketConfigService
+} from "./service/jobSeeker/job-application-config/job-seeker-application-socket-config.service";
+
 
 @NgModule({
   declarations: [
@@ -72,6 +80,8 @@ import { JobApplicantsComponent } from './features/company/job-applicants/job-ap
     CompanyDashboardComponent,
     CandidatesInsightsComponent,
     JobApplicantsComponent,
+    JobSeekerNavbarComponent,
+    JobSeekerDashboardComponent,
   ],
   imports: [
     CommonModule,
@@ -90,7 +100,10 @@ import { JobApplicantsComponent } from './features/company/job-applicants/job-ap
     MatInputModule,
     BrowserAnimationsModule,
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    JobSeekerApplicationSocketConfigService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

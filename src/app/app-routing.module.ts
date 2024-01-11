@@ -15,14 +15,19 @@ import { CompanyDashboardComponent } from './features/company/dashboard/company-
 import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
 import { JobApplicantsComponent } from './features/company/job-applicants/job-applicants.component';
 
+
 const routes: Routes = [
   {
     path: 'company/auth/register',
     component: RegisterComponent,
   },
+
   {
     path: 'company/auth/login',
     component: LoginComponent,
+  },{
+    path: 'jobSeeker/dashboard',
+    component: JobSeekerDashboardComponent
   },
   {
     path: 'jobSeeker/auth/register',
