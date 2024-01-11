@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { Offer } from 'src/app/model/offer.model';
-import { OfferService } from 'src/app/service/offer.service';
-import { AppState } from '../../store/app.state';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {Offer} from 'src/app/model/offer.model';
+import {OfferService} from 'src/app/service/offer.service';
+import {AppState} from '../../store/app.state';
+import {CompanySubscriptionServiceService} from "../../service/company/company-subscription-service.service";
+import {CompanySubscribeRequest, SubscriptionStatus} from "../../model/company.model";
 
 @Component({
   selector: 'app-offer-form',
@@ -12,15 +14,19 @@ import { AppState } from '../../store/app.state';
 })
 export class OfferFormComponent implements OnInit {
   offerForm!: FormGroup;
-  showModal!: boolean;
+  showModal: boolean = false;
+  companyAuth:any;
 
   constructor(
     private builder: FormBuilder,
     private offerService: OfferService,
-    private store: Store<AppState>
-  ) {}
+    private store: Store<AppState>,
+    private companySubscriptionServiceService:CompanySubscriptionServiceService
+  ) {
+  }
+
   ngOnInit(): void {
-    this.showModal = true;
+    // this.showModal = true;
     this.offerForm = this.builder.group({
       category: this.builder.control(
         '',
@@ -56,7 +62,9 @@ export class OfferFormComponent implements OnInit {
         Validators.compose([Validators.required])
       ),
     });
+    // this.companyAuth.id = 1;
   }
+
   // uploadFile(event: any) {
   //   this.offerForm.value.image = event.target.files[0];
   //   console.log(this.offerForm.value.image);
@@ -85,19 +93,45 @@ export class OfferFormComponent implements OnInit {
     if (this.offerForm.valid) {
       this.offerService.save(offer).subscribe({
         next: (res: Offer) => {
-          alert(JSON.stringify(res));
+          // alert(JSON.stringify(res));
         },
         error: (err: any) => {
-          console.error('Error : ', err.error);
+          console.error('Error : ', err);
+          //TODO:NOT EXCEPTION NEED TO BE HANDLED BY THE SHOWING PAYMENT MODAL
           this.showModal = true;
         },
       });
     } else {
       alert('not submitted');
+
+
     }
   }
 
   toggleModal() {
     this.showModal = !this.showModal;
+  }
+
+  handleNewSubscription(subscription: string) {
+    console.log("handle new subscription" + subscription);
+
+    //TODO: CHECKOUT THE SUBSCRIPTION STATUS
+    let subscribeRequest:CompanySubscribeRequest = {
+        subscriptionStatus: subscription as unknown as SubscriptionStatus,
+        companyId: '1',
+        token: "token"
+
+    }
+    this.companySubscriptionServiceService.subscribe(subscribeRequest).subscribe(
+        (res: String) => {
+          console.log("subscription done")
+          alert(JSON.stringify(res));
+          this.showModal = false;
+        },
+        (err: any) => {
+          this.showModal = false;
+          console.log('Error : ', err);
+        }
+    )
   }
 }
