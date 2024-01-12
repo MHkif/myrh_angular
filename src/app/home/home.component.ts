@@ -15,14 +15,13 @@ export class HomeComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.store.select('auth').subscribe(
+    this.store.select('companyAuth').subscribe(
       (state) => (
         (this.isLogged = state.isLogged),
-        (this.object = state.object),
+        (this.object = state.company),
         // console.log('State :', state),
         console.log('isLogged  : ', this.isLogged, ', Object :', this.object)
       )
     );
-
   }
 }

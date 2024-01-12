@@ -15,17 +15,15 @@ export class AdminLayoutComponent implements OnInit {
   company!: Company | null;
   constructor(
     private store: Store<AppState>,
-    private companyService: CompanyService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.store
-      .select('auth')
+      .select('companyAuth')
       .subscribe(
         (state) => (
-          (this.company = state.object as Company),
-          console.log('Object   : ', state.object)
+          (this.company = state.company),
+          console.log('Object   : ', state.company)
         )
       );
 

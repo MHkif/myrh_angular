@@ -22,7 +22,7 @@ export class SearchBarComponent implements OnInit {
     private store: Store<AppState>
   ) {}
   ngOnInit(): void {
-    this.store.select('auth').subscribe((state) => {
+    this.store.select('companyAuth').subscribe((state) => {
       if (state.isLogged) {
         this.isCompany = true;
       } else {

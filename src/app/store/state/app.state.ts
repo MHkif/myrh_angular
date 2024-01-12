@@ -1,17 +1,19 @@
 import { AdminLoginReducer } from '../admin/admin.reducer';
-import { AuthState } from './auth.state';
 
 import { CompanyLoginReducer } from '../company/company.reducer';
-import { ApplicantAuthState } from '../applicant/auth.state';
+import { ApplicantAuthState } from '../applicant/applicant.state';
 import { applicantAuthReducer } from '../applicant/applicant.reducer';
+import { CompanyAuthState } from '../company/company.state';
+import { AdminAuthState } from '../admin/admin.state';
 
 export interface AppState {
-  auth: AuthState;
+  companyAuth: CompanyAuthState;
+  adminAuth: AdminAuthState;
   applicantAuth: ApplicantAuthState;
 }
 
 export const appReducer = {
-  auth: CompanyLoginReducer,
+  companyAuth: CompanyLoginReducer,
   adminAuth: AdminLoginReducer,
   applicantAuth: applicantAuthReducer,
 };

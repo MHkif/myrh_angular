@@ -18,13 +18,13 @@ export class AuthGuard implements CanActivate, OnInit {
   constructor(private router: Router, private store: Store<AppState>) {}
   ngOnInit(): void {
     this.store
-      .select('auth')
+      .select('companyAuth')
       .subscribe((state) => (this.isLoggedIn = state.isLogged));
   }
 
   canActivate(): boolean {
     if (this.isLoggedIn) {
-      this.router.navigateByUrl('/offers'); // Redirect to home page if logged in
+      this.router.navigateByUrl('/company/dashboard'); // Redirect to home page if logged in
       return false; // Cancel navigation to the original route
     }
     this.router.navigateByUrl('/company/auth/login'); // Redirect to home page if logged in

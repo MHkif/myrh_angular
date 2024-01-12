@@ -3,7 +3,6 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { CompanyService } from '../../service/company.service';
 import { exhaustMap, map } from 'rxjs';
 import { Router } from '@angular/router';
-import { showAlert } from '../common/App.Action';
 import {
   company_loginStart,
   company_loginSuccess,
@@ -25,7 +24,7 @@ export class CompanyEffect {
         return this.service.save(action.company_data).pipe(
           map((data) => {
             console.log('Company data: ', data);
-            this.route.navigate(['/offers']);
+            this.route.navigate(['/company/dashboard']);
             return company_loginSuccess({ company: data, isLogged: true });
           })
         );
@@ -41,7 +40,7 @@ export class CompanyEffect {
           map((data) => {
             const company = this.service.formatCompany(data);
             console.log('Company : ', company);
-            this.route.navigate(['/offers']);
+            this.route.navigate(['/company/dashboard']);
             return company_loginSuccess({ company: company, isLogged: true });
           })
         );

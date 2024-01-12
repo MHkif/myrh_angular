@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { adminLoginSuccess } from './admin.action';
-import { initialState } from '../state/auth.state';
+import { initialState } from './admin.state';
 
 const _adminAuthReducer = createReducer(
   initialState,
@@ -10,7 +10,7 @@ const _adminAuthReducer = createReducer(
 
     return {
       ...state,
-      object: action.admin,
+      admin: action.admin,
       isLogged: true,
     };
   })

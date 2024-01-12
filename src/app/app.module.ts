@@ -47,6 +47,8 @@ import { JobSeekerApplicationSocketConfigService } from './service/jobSeeker/job
 import { AdminEffect } from './store/admin/admin.effect';
 import { ApplicantEffect } from './store/applicant/applicant.effect';
 import { SideBarComponent } from './layouts/side-bar/side-bar.component';
+import { CompanyLayoutComponent } from './features/company/company-layout/company-layout.component';
+import { CompanySideBarComponent } from './features/company/company-side-bar/company-side-bar.component';
 
 
 @NgModule({
@@ -78,7 +80,9 @@ import { SideBarComponent } from './layouts/side-bar/side-bar.component';
     JobApplicantsComponent,
     JobSeekerNavbarComponent,
     JobSeekerDashboardComponent,
-    SideBarComponent
+    SideBarComponent,
+    CompanyLayoutComponent,
+    CompanySideBarComponent,
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { initialState } from '../state/auth.state';
 import { company_loginSuccess } from './company.action';
+import { initialState } from './company.state';
 
 // Register in App Module or appReducer
 
@@ -12,7 +12,7 @@ const _companyLoginReducer = createReducer(
 
     return {
       ...state,
-      object: action.company,
+      company: action.company,
       isLogged: true,
     };
   })
