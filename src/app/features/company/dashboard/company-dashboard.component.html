@@ -1,7 +1,11 @@
-<app-layout>
-  <div content class="">
-    <router-outlet></router-outlet>
-  </div>
+<ng-container *ngIf="isLogged; else notLogged">
+  <app-company-layout>
+    <div content class="">
+      <router-outlet></router-outlet>
+    </div>
+  </app-company-layout>
+</ng-container>
 
-
-</app-layout>
+<ng-template #notLogged>
+  <div>Company Not Logged</div>
+</ng-template>

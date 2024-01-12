@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { JobApplicantService } from 'src/app/service/job-applicant.service';
+import { JobApplicantService } from '../../service/job-applicant.service';
 import {
   JobApplicant,
   JobApplicantRequsest,
-} from 'src/app/model/jobApplicant.model';
-import { Offer } from 'src/app/model/offer.model';
-import { OfferService } from 'src/app/service/offer.service';
+} from '../../model/jobApplicant.model';
+import { Offer } from '../../model/offer.model';
+import { OfferService } from '../../service/offer.service';
 
 @Component({
   selector: 'app-offer-detail',

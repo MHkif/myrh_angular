@@ -26,7 +26,6 @@ export class JobApplicantService {
       'id.offer_id',
       String(jobApplicant.JobApplicantId.offer_id)
     );
-    formData.append('createdDate', String(jobApplicant.createdDate));
     formData.append('jobSeeker.id', String(jobApplicant.jobSeeker.id));
     formData.append('jobSeeker.first_name', jobApplicant.jobSeeker.first_name);
     formData.append('jobSeeker.last_name', jobApplicant.jobSeeker.last_name);
