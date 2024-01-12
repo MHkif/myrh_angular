@@ -49,6 +49,8 @@ import { ApplicantEffect } from './store/applicant/applicant.effect';
 import { SideBarComponent } from './layouts/side-bar/side-bar.component';
 import { CompanyLayoutComponent } from './features/company/company-layout/company-layout.component';
 import { CompanySideBarComponent } from './features/company/company-side-bar/company-side-bar.component';
+import {AngularToastifyModule, ToastService} from "angular-toastify";
+
 
 
 @NgModule({
@@ -99,8 +101,15 @@ import { CompanySideBarComponent } from './features/company/company-side-bar/com
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
+    AngularToastifyModule,
   ],
-  providers: [AuthGuard, JobSeekerApplicationSocketConfigService],
+
+  providers: [
+    AuthGuard,
+    JobSeekerApplicationSocketConfigService,
+    ToastService
+  ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

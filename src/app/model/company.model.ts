@@ -1,4 +1,4 @@
-import { EntityState } from '@ngrx/entity';
+import {EntityState} from '@ngrx/entity';
 
 export interface Company {
   id: number | null | undefined;
@@ -23,4 +23,16 @@ export interface PageCompany {
   empty: boolean;
 }
 
-export interface CompanyModel extends EntityState<Company> {}
+export interface CompanyModel extends EntityState<Company> {
+}
+
+export interface CompanySubscribeRequest {
+  companyId: String;
+  subscriptionStatus: SubscriptionStatus;
+  token: String;
+}
+
+
+export enum SubscriptionStatus {
+  FREEMIUM, BASIC, PREMIUM
+}
