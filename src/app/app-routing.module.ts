@@ -15,6 +15,7 @@ import { CompanyDashboardComponent } from './features/company/dashboard/company-
 import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
 import { JobApplicantsComponent } from './features/company/job-applicants/job-applicants.component';
 import { JobSeekerDashboardComponent } from './features/candidat/dashboard/job-seeker-dashboard.component';
+import {PaymentSuccessComponent} from "./shared/payment/payement-success/payment-success.component";
 
 const routes: Routes = [
   {
@@ -50,6 +51,14 @@ const routes: Routes = [
   {
     path: 'admin/home',
     component: LoginComponent,
+  },
+  {
+    path : 'payment/success',
+    component : PaymentSuccessComponent
+  },
+  {
+    path:'payment/cancel',
+    component : PaymentSuccessComponent
   },
   {
     path: 'offers',
