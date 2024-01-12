@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Company, CompanyModel } from '../../model/company.model';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/state/app.state';
+import { Admin } from '../../../model/admin.model';
+import { AppState } from '../../../store/state/app.state';
 
 @Component({
   selector: 'app-admin-side-bar',
@@ -9,21 +9,19 @@ import { AppState } from '../../store/state/app.state';
   styleUrls: ['./admin-side-bar.component.css'],
 })
 export class AdminSideBarComponent implements OnInit {
-  company!: Company | null;
+  admin!: Admin | null;
   isLogged!: boolean | null;
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store
-      .select('companyAuth')
+      .select('adminAuth')
       .subscribe(
         (state) => (
-          (this.company = state.company),
-          (this.isLogged = state.isLogged),
-          console.log('Object : ', state.company)
+          (this.admin = state.admin), (this.isLogged = state.isLogged)
         )
       );
-    console.log('Company Side bar: ', this.company);
+    console.log('Admin Side bar: ', this.admin);
     console.log('isLogged Side bar : ', this.isLogged);
   }
 }

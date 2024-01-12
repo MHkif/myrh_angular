@@ -20,9 +20,8 @@
             </div>
 
             <span class="font-medium text-black hover:text-purple-800">
-              <!-- {{ recruiter.first_name }} {{ recruiter.last_name }} -->
+              {{ admin?.first_name }} {{ admin?.last_name }}
               <!-- Abdelmalek Achkif -->
-              {{ company?.name }}
             </span>
           </div>
         </a>
@@ -85,7 +84,7 @@
     </div>
     <li class="marker:text-white min-w-max">
       <a
-        [routerLink]="['/company/auth/login']"
+        [routerLink]="['/admin/auth/login']"
         class="group flex items-center space-x-4 p-1 text-white cursor-pointer"
       >
         <div class="flex items-center justify-center rounded p-2">
