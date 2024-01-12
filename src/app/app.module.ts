@@ -52,6 +52,7 @@ import {
   JobSeekerApplicationSocketConfigService
 } from "./service/jobSeeker/job-application-config/job-seeker-application-socket-config.service";
 import {AngularToastifyModule, ToastService} from "angular-toastify";
+import {PaymentSuccessComponent} from "./shared/payment/payement-success/payment-success.component";
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import {AngularToastifyModule, ToastService} from "angular-toastify";
     JobApplicantsComponent,
     JobSeekerNavbarComponent,
     JobSeekerDashboardComponent,
+    PaymentSuccessComponent
   ],
   imports: [
     CommonModule,
