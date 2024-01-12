@@ -50,6 +50,9 @@ import { CompanySideBarComponent } from './features/company/company-side-bar/com
 import {AngularToastifyModule, ToastService} from "angular-toastify";
 import { AdminLayoutComponent } from './features/admin/admin-layout/admin-layout.component';
 import { AdminSideBarComponent } from './features/admin/admin-side-bar/admin-side-bar.component';
+import { ApplicantLayoutComponent } from './features/candidat/applicant-layout/applicant-layout.component';
+import { ApplicanSideBarComponent } from './features/candidat/applican-side-bar/applican-side-bar.component';
+import { MyApplicantsComponent } from './features/candidat/my-applicants/my-applicants.component';
 
 
 @NgModule({
@@ -84,6 +87,9 @@ import { AdminSideBarComponent } from './features/admin/admin-side-bar/admin-sid
     SideBarComponent,
     CompanyLayoutComponent,
     CompanySideBarComponent,
+    ApplicantLayoutComponent,
+    ApplicanSideBarComponent,
+    MyApplicantsComponent,
   ],
   imports: [
     CommonModule,

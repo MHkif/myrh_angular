@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/state/app.state';
 import { Company } from '../model/company.model';
+import { JobSeeker } from '../model/jobSeeker.model';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +10,22 @@ import { Company } from '../model/company.model';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  isLogged!: boolean;
-  object!: Object | null;
-
+  applicant!: JobSeeker | null;
+  isLogged!: boolean | null;
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.store.select('companyAuth').subscribe(
+    this.store.select('applicantAuth').subscribe(
       (state) => (
         (this.isLogged = state.isLogged),
-        (this.object = state.company),
+        (this.applicant = state.applicant),
         // console.log('State :', state),
-        console.log('isLogged  : ', this.isLogged, ', Object :', this.object)
+        console.log(
+          'isLogged  : ',
+          this.isLogged,
+          ', Applicant :',
+          this.applicant
+        )
       )
     );
   }

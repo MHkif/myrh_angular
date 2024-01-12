@@ -1,4 +1,11 @@
-<app-job-seeker-navbar></app-job-seeker-navbar>
-<div>
+<ng-container *ngIf="isLogged; else notLogged">
+  <app-applicant-layout>
+    <div content class="">
+      <router-outlet></router-outlet>
+    </div>
+  </app-applicant-layout>
+</ng-container>
 
-</div>
+<ng-template #notLogged>
+  <div>Applicant Not Logged</div>
+</ng-template>

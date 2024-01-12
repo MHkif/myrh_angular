@@ -14,6 +14,7 @@ import { LoginComponent } from './auth/company/login/login.component';
 import { CandidatRegisterComponent } from './auth/applicant/register/candidat-register.component';
 import { JobSeekerLoginComponent } from './auth/applicant/login/login.component';
 import { AdminLoginComponent } from './auth/admin/login/admin-login.component';
+import { MyApplicantsComponent } from './features/candidat/my-applicants/my-applicants.component';
 
 const routes: Routes = [
   {
@@ -85,6 +86,24 @@ const routes: Routes = [
       {
         path: 'jobApplicants',
         component: JobApplicantsComponent,
+      },
+    ],
+  },
+  {
+    path: 'jobSeeker',
+    component: JobSeekerDashboardComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: JobSeekerDashboardComponent,
+      },
+      {
+        path: 'jobApplicants',
+        component: MyApplicantsComponent,
+      },
+      {
+        path: 'home',
+        component: HomeComponent,
       },
     ],
   },

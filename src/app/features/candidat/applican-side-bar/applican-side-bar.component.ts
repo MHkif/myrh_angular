@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { JobSeeker } from '../../model/jobSeeker.model';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/state/app.state';
+import { AppState } from '../../../store/state/app.state';
+import { JobSeeker } from '../../../model/jobSeeker.model';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css'],
+  selector: 'app-applican-side-bar',
+  templateUrl: './applican-side-bar.component.html',
+  styleUrls: ['./applican-side-bar.component.css'],
 })
-export class LayoutComponent {
+export class ApplicanSideBarComponent implements OnInit {
   applicant!: JobSeeker | null;
   isLogged!: boolean | null;
   constructor(private store: Store<AppState>) {}

@@ -28,7 +28,7 @@ export class ApplicantEffect {
           map((data) => {
             console.log('data :', data);
             const jobSeeker = this.jobSeekerService.jobSeekerMapper(data);
-            this.route.navigate(['/offers']);
+            this.route.navigate(['/jobSeeker/dashboard']);
             return applicantLoginSuccess({
               jobSeeker: jobSeeker,
               isLogged: true,
