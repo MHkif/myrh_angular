@@ -51,6 +51,7 @@ import { JobSeekerDashboardComponent } from './features/candidat/dashboard/job-s
 import {
   JobSeekerApplicationSocketConfigService
 } from "./service/jobSeeker/job-application-config/job-seeker-application-socket-config.service";
+import {AngularToastifyModule, ToastService} from "angular-toastify";
 
 
 @NgModule({
@@ -99,10 +100,12 @@ import {
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
+    AngularToastifyModule,
   ],
   providers: [
     AuthGuard,
-    JobSeekerApplicationSocketConfigService
+    JobSeekerApplicationSocketConfigService,
+    ToastService
   ],
   bootstrap: [AppComponent],
 })
