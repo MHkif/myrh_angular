@@ -4,10 +4,11 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {Offer} from 'src/app/model/offer.model';
 import {OfferService} from 'src/app/service/offer.service';
-import {AppState} from '../../store/app.state';
+
 import {CompanySubscriptionServiceService} from "../../service/company/company-subscription-service.service";
 import {CompanySubscribeRequest, SubscriptionStatus} from "../../model/company.model";
 import {ToastService} from "angular-toastify";
+import {AppState} from "../../store/state/app.state";
 
 @Component({
   selector: 'app-offer-form',

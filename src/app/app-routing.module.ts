@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { OfferFormComponent } from './offer/offer-form/offer-form.component';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
-import { AccountValidationComponent } from './account-validation/account-validation.component';
+import { AccountValidationComponent } from './auth/account-validation/account-validation.component';
 import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
 import { CompanyDashboardComponent } from './features/company/dashboard/company-dashboard.component';
 import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
