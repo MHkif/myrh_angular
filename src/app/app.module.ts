@@ -10,8 +10,6 @@ import { RegisterComponent } from './auth/company/register/register.component';
 import { LoginComponent } from './auth/company/login/login.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AdminSideBarComponent } from './layouts/admin-side-bar/admin-side-bar.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { SearchBarComponent } from './layouts/search-bar/search-bar.component';
 import { OfferHolderComponent } from './offer/offer-holder/offer-holder.component';
@@ -50,6 +48,8 @@ import { SideBarComponent } from './layouts/side-bar/side-bar.component';
 import { CompanyLayoutComponent } from './features/company/company-layout/company-layout.component';
 import { CompanySideBarComponent } from './features/company/company-side-bar/company-side-bar.component';
 import {AngularToastifyModule, ToastService} from "angular-toastify";
+import { AdminLayoutComponent } from './features/admin/admin-layout/admin-layout.component';
+import { AdminSideBarComponent } from './features/admin/admin-side-bar/admin-side-bar.component';
 
 
 @NgModule({
