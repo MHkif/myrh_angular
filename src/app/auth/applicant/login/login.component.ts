@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/state/app.state';
-import { applicantStartLogin } from '../../../../store/applicant/applicant.action';
+import { AppState } from '../../../store/state/app.state';
+import { applicantStartLogin } from '../../../store/applicant/applicant.action';
 
 @Component({
   selector: 'jobSeeker-login',

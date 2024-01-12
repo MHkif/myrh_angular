@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppState } from '../store/state/app.state';
-import { adminLoginStart } from '../store/admin/admin.action';
+import { AppState } from '../../../store/state/app.state';
+import { adminLoginStart } from '../../../store/admin/admin.action';
 
 @Component({
   selector: 'app-admin-login',

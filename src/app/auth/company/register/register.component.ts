@@ -1,46 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../../store/state/app.state';
-import { JobSeeker } from '../../../../model/jobSeeker.model';
-import { applicantStartRegister } from '../../../../store/applicant/applicant.action';
+import { AppState } from '../../../store/state/app.state';
+import { Company } from '../../../model/company.model';
+import { company_signUpStart } from '../../../store/company/company.action';
 
 @Component({
-  selector: 'app-candidat-register',
-  templateUrl: './candidat-register.component.html',
-  styleUrls: ['./candidat-register.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
 })
-export class CandidatRegisterComponent {
+export class RegisterComponent implements OnInit {
   constructor(private builder: FormBuilder, private store: Store<AppState>) {}
-
   signUpForm!: FormGroup;
-  first_name_Error: any;
-  last_name_Error: any;
-  email_Error: any;
-  password_Error: any;
-  confirm_pass_Error: any;
+  name_Error: string = '';
+  email_Error: string = '';
+  password_Error: string = '';
+  confirm_pass_Error: string = '';
 
   ngOnInit(): void {
     this.signUpForm = this.builder.group({
-      first_name: this.builder.control(
+      name: this.builder.control(
         '',
         Validators.compose([
           Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(30),
-        ])
-      ),
-      last_name: this.builder.control(
-        '',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(4),
+          Validators.minLength(8),
           Validators.maxLength(30),
         ])
       ),
       email: this.builder.control(
         '',
-        Validators.compose([Validators.required, Validators.email])
+        Validators.compose([
+          Validators.required,
+          Validators.email,
+          Validators.minLength(8),
+          Validators.maxLength(30),
+        ])
       ),
       password: this.builder.control(
         '',
@@ -63,49 +59,37 @@ export class CandidatRegisterComponent {
 
   onSubmit() {
     if (this.signUpForm.valid) {
-      let jobSeeker: JobSeeker = {
-        id: 0,
-        first_name: this.signUpForm.value.first_name,
-        last_name: this.signUpForm.value.last_name,
+      let company: Company = {
+        id: null,
+        name: this.signUpForm.value.name,
         email: this.signUpForm.value.email,
         password: this.signUpForm.value.password,
         image: null,
-        enabled: true,
+        enabled: false,
       };
 
-      if (this.signUpForm.value.confirmPassword === jobSeeker.password) {
-        this.store.dispatch(applicantStartRegister({ jobSeeker: jobSeeker }));
+      if (this.signUpForm.value.confirmPassword === company.password) {
+        this.store.dispatch(company_signUpStart({ company_data: company }));
       } else {
         this.confirm_pass_Error = 'Mismatch Password';
       }
     } else {
-      if (this.signUpForm?.get('first_name')?.hasError('required')) {
-        this.first_name_Error = 'First name is required.';
-      } else if (this.signUpForm?.get('first_name')?.hasError('minlength')) {
-        this.first_name_Error =
-          'First name must be at least 8 characters long.';
-      } else if (this.signUpForm?.get('first_name')?.hasError('maxlength')) {
-        this.first_name_Error =
-          'First name must be less than 30 characters long.';
+      if (this.signUpForm?.get('name')?.hasError('required')) {
+        this.name_Error = 'Name is required.';
+      } else if (this.signUpForm?.get('name')?.hasError('minlength')) {
+        this.name_Error = 'Name must be at least 8 characters long.';
+      } else if (this.signUpForm?.get('name')?.hasError('maxlength')) {
+        this.name_Error = 'Name must be less than 30 characters long.';
       } else {
-        this.first_name_Error = '';
-      }
-
-      if (this.signUpForm?.get('last_name')?.hasError('required')) {
-        this.last_name_Error = 'Last name is required.';
-      } else if (this.signUpForm?.get('last_name')?.hasError('minlength')) {
-        this.last_name_Error = ' Last name must be at least 8 characters long.';
-      } else if (this.signUpForm?.get('last_name')?.hasError('maxlength')) {
-        this.last_name_Error =
-          'Last name must be less than 30 characters long.';
-      } else {
-        this.last_name_Error = '';
+        this.name_Error = '';
       }
 
       if (this.signUpForm?.get('email')?.hasError('required')) {
         this.email_Error = 'Email is required.';
-      } else if (this.signUpForm?.get('email')?.hasError('email')) {
-        this.email_Error = 'This filed must be a valid email.';
+      } else if (this.signUpForm?.get('email')?.hasError('minlength')) {
+        this.email_Error = 'Email must be at least 8 characters long.';
+      } else if (this.signUpForm?.get('email')?.hasError('maxlength')) {
+        this.email_Error = 'Email must be less than 30 characters long.';
       } else {
         this.email_Error = '';
       }

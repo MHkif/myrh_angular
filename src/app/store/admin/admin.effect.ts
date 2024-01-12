@@ -23,7 +23,7 @@ export class AdminEffect {
             console.log('Data :', data);
             const admin = this.service.formatAdmin(data);
             console.log('Admin : ', admin);
-            this.route.navigate(['/offers']);
+            this.route.navigate(['/admin/dashboard']);
             return adminLoginSuccess({ admin: admin, isLogged: true });
           })
         );
