@@ -1,12 +1,23 @@
-import { createReducer } from '@ngrx/store';
-import { companyState, initialCompanyState } from './company.state';
+import { createReducer, on } from '@ngrx/store';
+import { company_loginSuccess } from './company.action';
+import { initialState } from './company.state';
 
-// Regester in App Module
+// Register in App Module or appReducer
 
-const _companyReducer = createReducer(companyState);
-export function companyReducer() {}
+const _companyLoginReducer = createReducer(
+  initialState,
+  on(company_loginSuccess, (state: any, action: any) => {
+    console.log('_companyAuthReducer : action : ', action);
+    console.log('_companyAuthReducer : state : ', state);
 
-// const _companyReducer = createReducer(initialCompanyState);
-// export function companyReducer(state: any, action: any) {
-//   return _companyReducer(state, action);
-// }
+    return {
+      ...state,
+      company: action.company,
+      isLogged: true,
+    };
+  })
+);
+
+export function CompanyLoginReducer(state: any, action: any) {
+  return _companyLoginReducer(state, action);
+}

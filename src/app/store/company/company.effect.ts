@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { CompanyService } from 'src/app/service/company.service';
-import { beginRegister } from './company.action';
-import { EMPTY, catchError, exhaustMap, map, of } from 'rxjs';
+import { CompanyService } from '../../service/company.service';
+import { exhaustMap, map } from 'rxjs';
 import { Router } from '@angular/router';
-import { showAlert } from '../common/App.Action';
+import {
+  company_loginStart,
+  company_loginSuccess,
+  company_signUpStart,
+} from './company.action';
 
 @Injectable()
 export class CompanyEffect {
@@ -14,26 +17,32 @@ export class CompanyEffect {
     private route: Router
   ) {}
 
-  _companyRegister = createEffect(() =>
+  companyRegister$ = createEffect(() =>
     this.action$.pipe(
-      ofType(beginRegister),
+      ofType(company_signUpStart),
       exhaustMap((action) => {
         return this.service.save(action.company_data).pipe(
-          map((comapny) => {
-            this.route.navigate(['company/auth/login']);
-            return showAlert({
-              message: 'Registred Successfully',
-              resultType: 'pass',
-            });
-          }),
-          catchError((_error) =>
-            of(
-              showAlert({
-                message: 'Registration Failed',
-                resultType: 'fail',
-              })
-            )
-          )
+          map((data) => {
+            console.log('Company data: ', data);
+            this.route.navigate(['/company/dashboard']);
+            return company_loginSuccess({ company: data, isLogged: true });
+          })
+        );
+      })
+    )
+  );
+
+  companyLogin$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(company_loginStart),
+      exhaustMap((action) => {
+        return this.service.auth(action.email, action.password).pipe(
+          map((data) => {
+            const company = this.service.formatCompany(data);
+            console.log('Company : ', company);
+            this.route.navigate(['/company/dashboard']);
+            return company_loginSuccess({ company: company, isLogged: true });
+          })
         );
       })
     )

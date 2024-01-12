@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterComponent } from './auth/register/register.component';
+
 import { HomeComponent } from './home/home.component';
 import { OfferFormComponent } from './offer/offer-form/offer-form.component';
-import { LoginComponent } from './auth/login/login.component';
-import { JobSeekerLoginComponent } from './features/candidat/auth/login/login.component';
-import { CandidatRegisterComponent } from './features/candidat/auth/register/candidat-register.component';
-
 import { AuthGuard } from './service/auth.guard';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
-import { AccountValidationComponent } from './account-validation/account-validation.component';
+
 import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
 import { CompanyDashboardComponent } from './features/company/dashboard/company-dashboard.component';
 import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
 import { JobApplicantsComponent } from './features/company/job-applicants/job-applicants.component';
 import { JobSeekerDashboardComponent } from './features/candidat/dashboard/job-seeker-dashboard.component';
 import {PaymentSuccessComponent} from "./shared/payment/payement-success/payment-success.component";
+import {RegisterComponent} from "./auth/company/register/register.component";
+import {LoginComponent} from "./auth/company/login/login.component";
+import {CandidatRegisterComponent} from "./auth/applicant/register/candidat-register.component";
+import {JobSeekerLoginComponent} from "./auth/applicant/login/login.component";
+import {AccountValidationComponent} from "./auth/account-validation/account-validation.component";
 
 const routes: Routes = [
   {
