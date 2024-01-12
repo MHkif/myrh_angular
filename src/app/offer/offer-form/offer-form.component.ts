@@ -6,6 +6,7 @@ import {OfferService} from 'src/app/service/offer.service';
 import {AppState} from '../../store/app.state';
 import {CompanySubscriptionServiceService} from "../../service/company/company-subscription-service.service";
 import {CompanySubscribeRequest, SubscriptionStatus} from "../../model/company.model";
+import {ToastService} from "angular-toastify";
 
 @Component({
   selector: 'app-offer-form',
@@ -21,7 +22,8 @@ export class OfferFormComponent implements OnInit {
     private builder: FormBuilder,
     private offerService: OfferService,
     private store: Store<AppState>,
-    private companySubscriptionServiceService:CompanySubscriptionServiceService
+    private companySubscriptionServiceService:CompanySubscriptionServiceService,
+    private _toastService: ToastService
   ) {
   }
 
@@ -94,9 +96,11 @@ export class OfferFormComponent implements OnInit {
       this.offerService.save(offer).subscribe({
         next: (res: Offer) => {
           // alert(JSON.stringify(res));
+          this._toastService.success("offer saved successfully !")
         },
         error: (err: any) => {
           console.error('Error : ', err);
+          this._toastService.error(err.error.message)
           //TODO:NOT EXCEPTION NEED TO BE HANDLED BY THE SHOWING PAYMENT MODAL
           this.showModal = true;
         },
@@ -125,11 +129,12 @@ export class OfferFormComponent implements OnInit {
     this.companySubscriptionServiceService.subscribe(subscribeRequest).subscribe(
         (res: String) => {
           console.log("subscription done")
-          alert(JSON.stringify(res));
+          this._toastService.success("subscription done successfully ! "+subscription)
           this.showModal = false;
         },
         (err: any) => {
           this.showModal = false;
+          this._toastService.error(err.error.message)
           console.log('Error : ', err);
         }
     )
