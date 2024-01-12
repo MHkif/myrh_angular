@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Company } from '../../model/company.model';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { beginRegister } from '../../store/company/company.action';
-import { AppState } from 'src/app/store/app.state';
+import { company_signUpStart } from '../../store/company/company.action';
+import { AppState } from '../../store/state/app.state';
 
 @Component({
   selector: 'app-register',
@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
       };
 
       if (this.signUpForm.value.confirmPassword === company.password) {
-        this.store.dispatch(beginRegister({ company_data: company }));
+        this.store.dispatch(company_signUpStart({ company_data: company }));
       } else {
         this.confirm_pass_Error = 'Mismatch Password';
       }

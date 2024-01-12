@@ -4,7 +4,7 @@ import { CompanyService } from '../service/company.service';
 import { ResponseHttp } from '../model/responseData.model';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AppState } from '../store/app.state';
+import { AppState } from '../store/state/app.state';
 import { Company } from '../model/company.model';
 
 @Component({
@@ -23,7 +23,6 @@ export class AccountValidationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   
     this.companyService
       .confirmAccount(this.route.snapshot.params['token'])
       .subscribe({
@@ -42,14 +41,16 @@ export class AccountValidationComponent implements OnInit {
   }
 
   sendToken() {
-    this.companyService.sendVerification(this.route.snapshot.params['token']).subscribe({
-      next: (res: ResponseHttp) => {
-        console.log('Res : ', res);
-      },
-      error: (err: any) => {
-        console.error('Error : sendVerification :  ', err);
-        console.log('sendVerification  : ', err.error.message);
-      },
-    });
+    this.companyService
+      .sendVerification(this.route.snapshot.params['token'])
+      .subscribe({
+        next: (res: ResponseHttp) => {
+          console.log('Res : ', res);
+        },
+        error: (err: any) => {
+          console.error('Error : sendVerification :  ', err);
+          console.log('sendVerification  : ', err.error.message);
+        },
+      });
   }
 }

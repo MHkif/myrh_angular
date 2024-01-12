@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OfferService } from 'src/app/service/offer.service';
+import { Company } from '../../model/company.model';
+import { AppState } from '../../store/state/app.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'search-bar',
@@ -9,35 +12,29 @@ import { OfferService } from 'src/app/service/offer.service';
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnInit {
+  isCompany!: boolean;
   searchForm!: FormGroup;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private builder: FormBuilder,
-    private service: OfferService
+    private service: OfferService,
+    private store: Store<AppState>
   ) {}
   ngOnInit(): void {
+    this.store.select('companyAuth').subscribe((state) => {
+      if (state.isLogged) {
+        this.isCompany = true;
+      } else {
+        this.isCompany = false;
+      }
+    });
     this.searchForm = this.builder.group({
-      mot_cle: this.builder.control(
-        ''
-        // Validators.compose([Validators.required])
-      ),
-      city: this.builder.control(
-        ''
-        //Validators.compose([Validators.required])
-      ),
-      level: this.builder.control(
-        ''
-        // Validators.compose([Validators.required])
-      ),
-      activity: this.builder.control(
-        ''
-        // Validators.compose([Validators.required])
-      ),
-      job: this.builder.control(
-        ''
-        // Validators.compose([Validators.required])
-      ),
+      mot_cle: this.builder.control(''),
+      city: this.builder.control(''),
+      level: this.builder.control(''),
+      activity: this.builder.control(''),
+      job: this.builder.control(''),
     });
   }
 

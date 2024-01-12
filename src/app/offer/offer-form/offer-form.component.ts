@@ -1,3 +1,4 @@
+
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
@@ -28,7 +29,8 @@ export class OfferFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.showModal = true;
+    this.showModal = false;
+
     this.offerForm = this.builder.group({
       category: this.builder.control(
         '',

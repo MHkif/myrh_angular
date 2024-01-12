@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/store/app.state';
-import { jobSeekerStartLogin } from 'src/app/store/jobseeker/auth.action';
-import { AuthLayoutComponent } from 'src/app/layouts/auth-layout/auth-layout.component';
+import { AppState } from '../../../../store/state/app.state';
+import { applicantStartLogin } from '../../../../store/applicant/applicant.action';
 
 @Component({
   selector: 'jobSeeker-login',
@@ -42,7 +41,7 @@ export class JobSeekerLoginComponent implements OnInit {
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
     if (this.loginForm.valid) {
-      this.store.dispatch(jobSeekerStartLogin({ email, password }));
+      this.store.dispatch(applicantStartLogin({ email, password }));
     } else {
       if (this.loginForm?.get('email')?.hasError('required')) {
         this.email_Error = 'Email is required.';

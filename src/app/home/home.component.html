@@ -1,17 +1,13 @@
-
-<ng-container *ngIf="isLogged; else notLogged"> 
+<ng-container *ngIf="isLogged; else notLogged">
   <app-admin-layout>
     <offers admin-content></offers>
     <search-bar search-Bar></search-bar>
   </app-admin-layout>
 </ng-container>
 
-
-<ng-template
-  #notLogged
->
+<ng-template #notLogged>
   <app-layout>
     <offers content></offers>
-    <search-bar search-Bar></search-bar>
+    <search-bar search-bar></search-bar>
   </app-layout>
 </ng-template>

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Company, CompanyModel } from '../../model/company.model';
+import { Company } from '../../../model/company.model';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/state/app.state';
+import { AppState } from '../../../store/state/app.state';
 
 @Component({
-  selector: 'app-admin-side-bar',
-  templateUrl: './admin-side-bar.component.html',
-  styleUrls: ['./admin-side-bar.component.css'],
+  selector: 'app-company-side-bar',
+  templateUrl: './company-side-bar.component.html',
+  styleUrls: ['./company-side-bar.component.css'],
 })
-export class AdminSideBarComponent implements OnInit {
+export class CompanySideBarComponent implements OnInit {
   company!: Company | null;
   isLogged!: boolean | null;
   constructor(private store: Store<AppState>) {}
@@ -20,7 +20,7 @@ export class AdminSideBarComponent implements OnInit {
         (state) => (
           (this.company = state.company),
           (this.isLogged = state.isLogged),
-          console.log('Object : ', state.company)
+          console.log('Company : ', state.company)
         )
       );
     console.log('Company Side bar: ', this.company);

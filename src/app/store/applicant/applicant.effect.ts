@@ -1,19 +1,19 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { exhaustMap, map } from 'rxjs';
-import { CompanyService } from 'src/app/service/company.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { JobSeekerService } from '../../job-seeker.service';
 import {
-  jobSeekerLoginSuccess,
-  jobSeekerStartLogin,
-  registerStart,
-  registerSuccess,
-} from './auth.action';
-import { JobSeekerService } from 'src/app/job-seeker.service';
+  applicantLoginSuccess,
+  applicantRegisterSuccess,
+  applicantStartLogin,
+  applicantStartRegister,
+} from './applicant.action';
 
 @Injectable()
-export class JobSeekerEffect {
+export class ApplicantEffect {
   constructor(
     private actions$: Actions,
     private jobSeekerService: JobSeekerService,
@@ -22,14 +22,14 @@ export class JobSeekerEffect {
 
   login$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(jobSeekerStartLogin),
+      ofType(applicantStartLogin),
       exhaustMap((action) => {
         return this.jobSeekerService.auth(action.email, action.password).pipe(
           map((data) => {
             console.log('data :', data);
             const jobSeeker = this.jobSeekerService.jobSeekerMapper(data);
             this.route.navigate(['/offers']);
-            return jobSeekerLoginSuccess({
+            return applicantLoginSuccess({
               jobSeeker: jobSeeker,
               isLogged: true,
             });
@@ -41,13 +41,14 @@ export class JobSeekerEffect {
 
   register$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(registerStart),
+      ofType(applicantStartRegister),
       exhaustMap((action) => {
         return this.jobSeekerService.save(action.jobSeeker).pipe(
           map((jobSeeker) => {
-            this.route.navigate(['jobSeeker/auth/login']);
-            return registerSuccess({
+            this.route.navigate(['/offers']);
+            return applicantRegisterSuccess({
               jobSeeker: jobSeeker,
+              isLogged: true,
             });
           })
         );

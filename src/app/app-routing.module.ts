@@ -70,10 +70,15 @@ const routes: Routes = [
     path: 'offers/:id',
     component: OfferDetailComponent,
   },
+
   {
     path: 'company/dashboard',
     component: CompanyDashboardComponent,
     children: [
+      {
+        path: '',
+        component: JobApplicantsComponent,
+      },
       {
         path: 'candidates-insights',
         component: CandidatesInsightsComponent,

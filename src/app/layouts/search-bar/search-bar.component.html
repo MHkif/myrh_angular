@@ -1,5 +1,5 @@
 <section class="hidden w-[22rem] lg:flex flex-col gap-4">
-  <div>
+  <div *ngIf="isCompany">
     <a
       [routerLink]="['/offers/new']"
       class="group relative flex w-full justify-center rounded-md bg-purple-700 px-3 py-2.5 text-md font-semibold text-white hover:text-purple-600 hover:bg-white border border-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
