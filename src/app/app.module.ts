@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { OffersComponent } from './offer/offers/offers.component';
 import { OfferCardComponent } from './offer/offer-card/offer-card.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/company/register/register.component';
+import { LoginComponent } from './auth/company/login/login.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -28,14 +28,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthGuard } from './service/auth.guard';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { OfferDetailComponent } from './offer/offer-detail/offer-detail.component';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminLoginComponent } from './auth/admin/login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
-import { AccountValidationComponent } from './account-validation/account-validation.component';
-import { CandidatRegisterComponent } from './features/candidat/auth/register/candidat-register.component';
+import { AccountValidationComponent } from './auth/account-validation/account-validation.component';
+import { CandidatRegisterComponent } from './auth/applicant/register/candidat-register.component';
 import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
 import { AdminOfferListComponent } from './shared/admin/admin-offer-list/admin-offer-list.component';
 import { CommonModule } from '@angular/common';
-import { JobSeekerLoginComponent } from './features/candidat/auth/login/login.component';
+import { JobSeekerLoginComponent } from './auth/applicant/login/login.component';
 import { CompanyDashboardComponent } from './features/company/dashboard/company-dashboard.component';
 import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
 
@@ -50,7 +50,6 @@ import { SideBarComponent } from './layouts/side-bar/side-bar.component';
 import { CompanyLayoutComponent } from './features/company/company-layout/company-layout.component';
 import { CompanySideBarComponent } from './features/company/company-side-bar/company-side-bar.component';
 import {AngularToastifyModule, ToastService} from "angular-toastify";
-
 
 
 @NgModule({

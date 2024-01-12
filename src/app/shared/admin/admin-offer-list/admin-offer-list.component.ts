@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { OfferService } from 'src/app/service/offer.service';
 import {OfferStatus, PageOffers} from "../../../model/offer.model";
+import { OfferService } from '../../../service/offer.service';
 
 @Component({
   selector: 'app-admin-offer-list',

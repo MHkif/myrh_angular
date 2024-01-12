@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CompanyService } from '../service/company.service';
-import { ResponseHttp } from '../model/responseData.model';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AppState } from '../store/state/app.state';
-import { Company } from '../model/company.model';
+import { ResponseHttp } from '../../model/responseData.model';
+import { Company } from '../../model/company.model';
+import { CompanyService } from '../../service/company.service';
+import { AppState } from '../../store/state/app.state';
 
 @Component({
   selector: 'app-account-validation',

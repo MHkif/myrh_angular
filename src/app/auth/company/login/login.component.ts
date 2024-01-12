@@ -6,8 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/state/app.state';
-import { company_loginStart } from '../../store/company/company.action';
+import { AppState } from '../../../store/state/app.state';
+import { company_loginStart } from '../../../store/company/company.action';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
