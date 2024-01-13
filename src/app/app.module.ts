@@ -87,7 +87,7 @@ import { MyApplicantsComponent } from './features/candidat/my-applicants/my-appl
     JobSeekerNavbarComponent,
     JobSeekerDashboardComponent,
     PaymentSuccessComponent,
-    PaymentCancelComponent
+    PaymentCancelComponent,
     SideBarComponent,
     CompanyLayoutComponent,
     CompanySideBarComponent,

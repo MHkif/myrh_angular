@@ -26,6 +26,7 @@ export class JobApplicantsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log("this is the child component")
     this.jobApplicantService.getAllByCompany(this.companyId).subscribe({
       next: (res: Array<JobApplicant>) => {
         this.jobApplicants = res;
