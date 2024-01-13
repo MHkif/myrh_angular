@@ -9,12 +9,17 @@ import { CompanyDashboardComponent } from './features/company/dashboard/company-
 import { CandidatesInsightsComponent } from './features/company/candidats-insights/candidates-insights.component';
 import { JobApplicantsComponent } from './features/company/job-applicants/job-applicants.component';
 import { JobSeekerDashboardComponent } from './features/candidat/dashboard/job-seeker-dashboard.component';
+
+import {PaymentSuccessComponent} from "./shared/payment/payement-success/payment-success.component";
+import {PaymentCancelComponent} from "./shared/payment/payement-cancel/payment-cancel.component";
+
 import { RegisterComponent } from './auth/company/register/register.component';
 import { LoginComponent } from './auth/company/login/login.component';
 import { CandidatRegisterComponent } from './auth/applicant/register/candidat-register.component';
 import { JobSeekerLoginComponent } from './auth/applicant/login/login.component';
 import { AdminLoginComponent } from './auth/admin/login/admin-login.component';
 import { MyApplicantsComponent } from './features/candidat/my-applicants/my-applicants.component';
+
 
 const routes: Routes = [
   {
@@ -50,6 +55,14 @@ const routes: Routes = [
   {
     path: 'admin/auth/login',
     component: AdminLoginComponent,
+  },
+  {
+    path : 'payment/success',
+    component : PaymentSuccessComponent
+  },
+  {
+    path:'payment/cancel',
+    component : PaymentCancelComponent
   },
   {
     path: 'offers',

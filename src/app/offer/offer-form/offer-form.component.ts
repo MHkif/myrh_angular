@@ -6,9 +6,13 @@ import {Offer} from 'src/app/model/offer.model';
 import {OfferService} from 'src/app/service/offer.service';
 
 import {CompanySubscriptionServiceService} from "../../service/company/company-subscription-service.service";
-import {CompanySubscribeRequest, SubscriptionStatus} from "../../model/company.model";
 import {ToastService} from "angular-toastify";
+import { HttpClient } from '@angular/common/http';
+import {environment} from "../../../environments/environment";
+import {loadStripe} from "@stripe/stripe-js/pure";
+
 import {AppState} from "../../store/state/app.state";
+
 
 @Component({
   selector: 'app-offer-form',
@@ -19,13 +23,16 @@ export class OfferFormComponent implements OnInit {
   offerForm!: FormGroup;
   showModal: boolean = false;
   companyAuth:any;
+  stripePromise = loadStripe(environment.stripe);
+  baseUrl = 'http://localhost:8080/myrh/api/v1/company/subscriptions/payment';
 
   constructor(
     private builder: FormBuilder,
     private offerService: OfferService,
     private store: Store<AppState>,
     private companySubscriptionServiceService:CompanySubscriptionServiceService,
-    private _toastService: ToastService
+    private _toastService: ToastService,
+    private http: HttpClient
   ) {
   }
 
@@ -119,27 +126,43 @@ export class OfferFormComponent implements OnInit {
     this.showModal = !this.showModal;
   }
 
-  handleNewSubscription(subscription: string) {
-    console.log("handle new subscription" + subscription);
+  async handleNewSubscription(subscription: string) : Promise<void>{
 
-    //TODO: CHECKOUT THE SUBSCRIPTION STATUS
-    let subscribeRequest:CompanySubscribeRequest = {
-        subscriptionStatus: subscription as unknown as SubscriptionStatus,
-        companyId: '1',
-        token: "token"
 
+    let amount = 0;
+
+    switch (subscription) {
+      case 'FREEMIUM':
+        amount = 0;
+        break;
+      case 'BASIC':
+        amount = 500;
+        break;
+      case 'PREMIUM':
+        amount = 1000;
+        break;
     }
-    this.companySubscriptionServiceService.subscribe(subscribeRequest).subscribe(
-        (res: String) => {
-          console.log("subscription done")
-          this._toastService.success("subscription done successfully ! "+subscription)
-          this.showModal = false;
-        },
-        (err: any) => {
-          this.showModal = false;
-          this._toastService.error(err.error.message)
-          console.log('Error : ', err);
-        }
-    )
+
+    const payment = {
+      name: 'Company Subscription',
+      currency: 'MAD',
+      // amount on cents *10 => to be on dollar
+      amount: amount,
+      quantity: '1',
+      successUrl: 'http://localhost:4200/payment/success?subscriptionStatus='+subscription+'&id='+1,
+      cancelUrl: 'http://localhost:4200/payment/cancel'
+    };
+
+
+    const stripe = await this.stripePromise;
+
+    // this is a normal http calls for a backend api
+    this.http
+      .post(this.baseUrl, payment).subscribe((data: any) => {
+        stripe!.redirectToCheckout({
+          sessionId: data.id,
+        });
+      });
+
   }
 }

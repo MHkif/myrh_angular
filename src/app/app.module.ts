@@ -48,6 +48,8 @@ import { SideBarComponent } from './layouts/side-bar/side-bar.component';
 import { CompanyLayoutComponent } from './features/company/company-layout/company-layout.component';
 import { CompanySideBarComponent } from './features/company/company-side-bar/company-side-bar.component';
 import {AngularToastifyModule, ToastService} from "angular-toastify";
+import {PaymentSuccessComponent} from "./shared/payment/payement-success/payment-success.component";
+import {PaymentCancelComponent} from "./shared/payment/payement-cancel/payment-cancel.component";
 import { AdminLayoutComponent } from './features/admin/admin-layout/admin-layout.component';
 import { AdminSideBarComponent } from './features/admin/admin-side-bar/admin-side-bar.component';
 import { ApplicantLayoutComponent } from './features/candidat/applicant-layout/applicant-layout.component';
@@ -84,12 +86,15 @@ import { MyApplicantsComponent } from './features/candidat/my-applicants/my-appl
     JobApplicantsComponent,
     JobSeekerNavbarComponent,
     JobSeekerDashboardComponent,
+    PaymentSuccessComponent,
+    PaymentCancelComponent
     SideBarComponent,
     CompanyLayoutComponent,
     CompanySideBarComponent,
     ApplicantLayoutComponent,
     ApplicanSideBarComponent,
     MyApplicantsComponent,
+
   ],
   imports: [
     CommonModule,
