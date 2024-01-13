@@ -1,10 +1,14 @@
 <ng-container *ngIf="offers | async as offersList; else failureOrLoading">
-  <div class="flex flex-col gap-4">
-    <offer-card
-      *ngFor="let offer of offersList.content"
-      [offer]="offer"
-    ></offer-card>
+  <div class="py-6 w-full flex flex-row  gap-8">
+    <div class="flex flex-col gap-4">
+      <offer-card
+        *ngFor="let offer of offersList.content"
+        [offer]="offer"
+      ></offer-card>
+    </div>
+    <search-bar search-Bar></search-bar>
   </div>
+
   <ng-container *ngIf="offersList.totalPages">
     <ul class="py-3 flex justify-center text-xs font-medium space-x-1">
       <li *ngIf="!offersList.first">

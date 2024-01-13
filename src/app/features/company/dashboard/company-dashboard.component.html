@@ -1,8 +1,9 @@
 <ng-container *ngIf="isLogged; else notLogged">
   <app-company-layout>
-    <div content class="">
+    <div content class="hideScroll">
       <router-outlet></router-outlet>
     </div>
+
   </app-company-layout>
 </ng-container>
 

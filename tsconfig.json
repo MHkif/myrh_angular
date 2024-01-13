@@ -11,7 +11,9 @@
   ],
   "compilerOptions": {
     "paths": {
-      "sockjs-client": ["node_modules/sockjs-client/dist/sockjs.min.js"]
+      "sockjs-client": ["node_modules/sockjs-client/dist/sockjs.min.js"],
+        "@core/*": ["src/app/@core/*"]
+    
     },
     "types": [
       "@types/stompjs"
