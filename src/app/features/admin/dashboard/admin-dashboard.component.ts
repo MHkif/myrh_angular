@@ -7,6 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AdminDashboardComponent {
 
-  //TODO: AGENT PEUT ACCEPETR OU REFUSER L'OFFER D'EMPLOI
-  admin: string = "ABDELMLAK ACHKIF";
 }

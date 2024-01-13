@@ -45,50 +45,48 @@ import { ApplicantEffect } from './store/applicant/applicant.effect';
 import { SideBarComponent } from './layouts/side-bar/side-bar.component';
 import { CompanyLayoutComponent } from './features/company/company-layout/company-layout.component';
 import { CompanySideBarComponent } from './features/company/company-side-bar/company-side-bar.component';
-import {AngularToastifyModule, ToastService} from "angular-toastify";
-import {PaymentSuccessComponent} from "./shared/payment/payement-success/payment-success.component";
-import {PaymentCancelComponent} from "./shared/payment/payement-cancel/payment-cancel.component";
+import { AngularToastifyModule, ToastService } from 'angular-toastify';
+import { PaymentSuccessComponent } from './shared/payment/payement-success/payment-success.component';
+import { PaymentCancelComponent } from './shared/payment/payement-cancel/payment-cancel.component';
 import { AdminLayoutComponent } from './features/admin/admin-layout/admin-layout.component';
 import { AdminSideBarComponent } from './features/admin/admin-side-bar/admin-side-bar.component';
 import { ApplicantLayoutComponent } from './features/candidat/applicant-layout/applicant-layout.component';
 import { ApplicanSideBarComponent } from './features/candidat/applican-side-bar/applican-side-bar.component';
 import { MyApplicantsComponent } from './features/candidat/my-applicants/my-applicants.component';
-
-
+import { AuthAdminGuard } from './core/guards/admin/auth-admin.guard';
 
 const MODULES = [
   CommonModule,
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([CompanyEffect, AdminEffect, ApplicantEffect]),
-    StoreDevtoolsModule.instrument({
-      logOnly: !isDevMode(),
-    }),
-    BrowserAnimationsModule,
-    AngularToastifyModule,
- ];
+  BrowserModule,
+  AppRoutingModule,
+  ReactiveFormsModule,
+  HttpClientModule,
+  StoreModule.forRoot(appReducer),
+  EffectsModule.forRoot([CompanyEffect, AdminEffect, ApplicantEffect]),
+  StoreDevtoolsModule.instrument({
+    logOnly: !isDevMode(),
+  }),
+  BrowserAnimationsModule,
+  AngularToastifyModule,
+];
 
- const OFFER_COMPONENT = [
+const OFFER_COMPONENT = [
   OffersComponent,
   OfferCardComponent,
   OfferHolderComponent,
   OfferFormComponent,
   OfferDetailComponent,
- ];
+];
 
- const LAYOUTS = [
+const LAYOUTS = [
   LayoutComponent,
   AuthLayoutComponent,
   CompanyLayoutComponent,
   ApplicantLayoutComponent,
   AdminLayoutComponent,
+];
 
- ];
-
- const APPLICANT_COMPONENT= [
+const APPLICANT_COMPONENT = [
   CandidatRegisterComponent,
   CandidatesInsightsComponent,
   JobApplicantsComponent,
@@ -97,23 +95,23 @@ const MODULES = [
   JobSeekerLoginComponent,
   ApplicanSideBarComponent,
   MyApplicantsComponent,
- ];
+];
 
- const COMPANY_COMPONENT = [
+const COMPANY_COMPONENT = [
   CompanyDashboardComponent,
   CompanySideBarComponent,
   AccountValidationComponent,
   RegisterComponent,
   LoginComponent,
- ];
+];
 
- const ADMIN_COMPONENT = [
+const ADMIN_COMPONENT = [
   AdminDashboardComponent,
-    AdminOfferListComponent,
-    AdminLoginComponent,
-    AdminHomeComponent,
-    AdminSideBarComponent,
- ];
+  AdminOfferListComponent,
+  AdminLoginComponent,
+  AdminHomeComponent,
+  AdminSideBarComponent,
+];
 
 @NgModule({
   declarations: [
@@ -124,13 +122,18 @@ const MODULES = [
     PaymentSuccessComponent,
     PaymentCancelComponent,
     SideBarComponent,
-...COMPANY_COMPONENT,...ADMIN_COMPONENT,...APPLICANT_COMPONENT,...LAYOUTS, ...OFFER_COMPONENT
+    ...COMPANY_COMPONENT,
+    ...ADMIN_COMPONENT,
+    ...APPLICANT_COMPONENT,
+    ...LAYOUTS,
+    ...OFFER_COMPONENT,
   ],
   imports: [...MODULES],
   providers: [
     AuthGuard,
+    AuthAdminGuard,
     JobSeekerApplicationSocketConfigService,
-    ToastService
+    ToastService,
   ],
 
   bootstrap: [AppComponent],

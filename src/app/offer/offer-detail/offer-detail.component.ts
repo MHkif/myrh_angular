@@ -9,6 +9,8 @@ import {
 } from '../../model/jobApplicant.model';
 import { Offer } from '../../model/offer.model';
 import { OfferService } from '../../service/offer.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store/state/app.state';
 
 @Component({
   selector: 'app-offer-detail',
@@ -17,6 +19,9 @@ import { OfferService } from '../../service/offer.service';
 })
 export class OfferDetailComponent implements OnInit {
   offer!: Observable<Offer>;
+  isApplicant: boolean = false;
+  isAdmin: boolean = false;
+  isCompany: boolean = false;
   showModal = false;
   jobApplicantForm!: FormGroup;
   first_name_Error: string = '';
@@ -27,9 +32,18 @@ export class OfferDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private offerService: OfferService,
     private jobApplicantService: JobApplicantService,
-    private builder: FormBuilder
+    private builder: FormBuilder,
+    private _store: Store<AppState>
   ) {}
   ngOnInit(): void {
+    this._store.select('adminAuth').subscribe((state) => {
+      this.isAdmin = state.isLogged;
+    });
+    this._store.select('companyAuth').subscribe((state) => {
+      this.isCompany = state.isLogged;
+    });
+    this.isApplicant = !this.isAdmin && !this.isCompany;
+    console.log('Applicant Log : ', this.isApplicant);
     this.offer = this.offerService.getOne(this.route.snapshot.params['id']);
     this.jobApplicantForm = this.builder.group({
       first_name: this.builder.control(
