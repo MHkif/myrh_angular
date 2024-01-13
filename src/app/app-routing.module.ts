@@ -22,27 +22,16 @@ import { MyApplicantsComponent } from './features/candidat/my-applicants/my-appl
 import { OffersComponent } from './offer/offers/offers.component';
 import { AdminOfferListComponent } from './shared/admin/admin-offer-list/admin-offer-list.component';
 import { AuthAdminGuard } from './core/guards/admin/auth-admin.guard';
+import { AuthCompanyGuard } from './core/guards/company/auth-company-guard.guard';
+import { ApplicantLayoutComponent } from './features/candidat/applicant-layout/applicant-layout.component';
+import { AuthApplicantGuard } from './core/guards/applicant/auth-applicant-guard.guard';
 
 const routes: Routes = [
-  // {
-  //   path: 'admin',
-  //   loadChildren: () =>
-  //    import('./modules/admin/admin.module').then((m) => m.AdminModule),
-  //   canActivate: [MsalGuard, RoleGuardService],
-  //   data: {
-  //    requiredRole: environment.auth.roles.admin,
-  //   },
-  //  },
-
-  // { path: '**', component: PageNotFoundComponent },
-
   // default web layout  Applicant :
-
   {
-    path: '',
-    children: [
-      { path: '', redirectTo: 'offers', pathMatch: 'full' },
+    path: 'applicant',
 
+    children: [
       {
         path: 'auth',
         children: [
@@ -60,6 +49,8 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: JobSeekerDashboardComponent,
+        canActivate: [AuthApplicantGuard],
+
         children: [
           { path: '', redirectTo: 'jobApplicants', pathMatch: 'full' },
 
@@ -67,17 +58,20 @@ const routes: Routes = [
             path: 'jobApplicants',
             component: MyApplicantsComponent,
           },
+          {
+            path: 'offers',
+            children: [
+              {
+                path: '',
+                component: OffersComponent,
+              },
+              {
+                path: ':id',
+                component: OfferDetailComponent,
+              },
+            ],
+          },
         ],
-      },
-
-      {
-        path: 'offers',
-        component: OffersComponent,
-      },
-
-      {
-        path: 'offers/:id',
-        component: OfferDetailComponent,
       },
     ],
   },
@@ -109,6 +103,7 @@ const routes: Routes = [
 
       {
         path: 'dashboard',
+        canActivate: [AuthCompanyGuard],
         component: CompanyDashboardComponent,
         children: [
           { path: '', redirectTo: 'offers', pathMatch: 'full' },
@@ -190,10 +185,6 @@ const routes: Routes = [
   {
     path: 'payment/cancel',
     component: PaymentCancelComponent,
-  },
-  {
-    path: 'offers',
-    component: HomeComponent,
   },
 ];
 
