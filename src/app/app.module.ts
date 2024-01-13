@@ -54,6 +54,8 @@ import { ApplicantLayoutComponent } from './features/candidat/applicant-layout/a
 import { ApplicanSideBarComponent } from './features/candidat/applican-side-bar/applican-side-bar.component';
 import { MyApplicantsComponent } from './features/candidat/my-applicants/my-applicants.component';
 
+
+
 const MODULES = [
   CommonModule,
     BrowserModule,

@@ -25,6 +25,7 @@ export class CompanyDashboardComponent {
           console.log('Company Dashboard: ', state.company)
         )
       );
+    this.isLogged = true;
     console.log('isLogged Dashboard : ', this.isLogged);
   }
 }

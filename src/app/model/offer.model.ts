@@ -38,7 +38,16 @@ export interface JobSeekerOfferInsightsResponse {
   nb_job_refused: number;
   nb_job_waiting: number;
   nb_job_in_process: number;
+  jobSeeker_status: UserStatus;
 }
+
+export enum UserStatus {
+  ONLINE= 'ONLINE',
+  OFFLINE= 'OFFLINE',
+  BUSY= 'BUSY',
+  ALL= 'ALL'
+}
+
 
 export interface CandidateOffersApplyCollection {
   offerId: number;
