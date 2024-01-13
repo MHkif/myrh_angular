@@ -26,11 +26,12 @@ export class OffersComponent {
   ) {}
 
   ngOnInit(): void {
-    this.router.navigate(['offers'], {
+    this.router.navigate([], {
       queryParams: {
         page: 1,
       },
     });
+  
     this.route.queryParams.subscribe((params) => {
       this.currentPage = params['page'] || 0;
       this.size = params['size'] || 5;
@@ -54,7 +55,7 @@ export class OffersComponent {
 
   navigateToAdminCompetitions(page: any): void {
     const queryParams = { page: page }; // Assuming this.page is your parameter value
-    this.router.navigate(['offers'], { queryParams: queryParams });
+    this.router.navigate([], { queryParams: queryParams });
   }
 
   getTotalPagesArray(listOffers: PageOffers): number[] {

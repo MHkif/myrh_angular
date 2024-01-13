@@ -6,8 +6,8 @@
       <!-- Profile -->
       <li class="marker:text-white min-w-max">
         <a
-          routerLink="/profile"
-          aria-label="profile"
+          routerLink="dashboard"
+          aria-label="dashboard"
           class="group relative flex items-center space-x-4 p-1.5 text-purple-50"
         >
           <div class="flex w-full items-center space-x-4">
@@ -29,7 +29,7 @@
       <ul class="mt-5 space-y-1 tracking-wide text-purple-700">
         <li class="min-w-max">
           <a
-            href="/home"
+            routerLink="home"
             aria-label="home"
             class="group relative flex items-center space-x-4 p-1"
           >
@@ -57,8 +57,8 @@
         </li>
         <li class="min-w-max">
           <a
-            href="/offers"
-            aria-label="offers"
+            routerLink="candidates-insights"
+            aria-label="applicant-insights"
             class="group relative flex items-center space-x-4 p-1"
           >
             <div class="group flex items-center justify-center rounded p-2">
@@ -75,7 +75,7 @@
             </div>
             <span
               class="flex items-center text-gray-900 group-hover:text-purple-700 font-medium"
-              >Offers</span
+              >Applicant Insights</span
             >
           </a>
         </li>
@@ -83,7 +83,7 @@
     </div>
     <li class="marker:text-white min-w-max">
       <a
-        [routerLink]="['/company/auth/login']"
+        routerLink="/company/auth/login"
         class="group flex items-center space-x-4 p-1 text-white cursor-pointer"
       >
         <div class="flex items-center justify-center rounded p-2">

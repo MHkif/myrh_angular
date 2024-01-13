@@ -17,8 +17,6 @@ import { OfferFormComponent } from './offer/offer-form/offer-form.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { CompanyEffect } from './store/company/company.effect';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { appReducer } from './store/state/app.state';
 
@@ -57,47 +55,9 @@ import { ApplicanSideBarComponent } from './features/candidat/applican-side-bar/
 import { MyApplicantsComponent } from './features/candidat/my-applicants/my-applicants.component';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    OffersComponent,
-    OfferCardComponent,
-    RegisterComponent,
-    LoginComponent,
-    AdminLayoutComponent,
-    CandidatRegisterComponent,
-    AdminSideBarComponent,
-    NavbarComponent,
-    SearchBarComponent,
-    OfferHolderComponent,
-    OfferFormComponent,
-    LayoutComponent,
-    OfferDetailComponent,
-    AdminLoginComponent,
-    AdminHomeComponent,
-    AccountValidationComponent,
-    AdminDashboardComponent,
-    JobSeekerLoginComponent,
-    AdminOfferListComponent,
-    AuthLayoutComponent,
-    CompanyDashboardComponent,
-    CandidatesInsightsComponent,
-    JobApplicantsComponent,
-    JobSeekerNavbarComponent,
-    JobSeekerDashboardComponent,
-    PaymentSuccessComponent,
-    PaymentCancelComponent,
-    SideBarComponent,
-    CompanyLayoutComponent,
-    CompanySideBarComponent,
-    ApplicantLayoutComponent,
-    ApplicanSideBarComponent,
-    MyApplicantsComponent,
 
-  ],
-  imports: [
-    CommonModule,
+const MODULES = [
+  CommonModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -107,13 +67,66 @@ import { MyApplicantsComponent } from './features/candidat/my-applicants/my-appl
     StoreDevtoolsModule.instrument({
       logOnly: !isDevMode(),
     }),
-    // Metarial
-    MatFormFieldModule,
-    MatInputModule,
     BrowserAnimationsModule,
     AngularToastifyModule,
-  ],
+ ];
 
+ const OFFER_COMPONENT = [
+  OffersComponent,
+  OfferCardComponent,
+  OfferHolderComponent,
+  OfferFormComponent,
+  OfferDetailComponent,
+ ];
+
+ const LAYOUTS = [
+  LayoutComponent,
+  AuthLayoutComponent,
+  CompanyLayoutComponent,
+  ApplicantLayoutComponent,
+  AdminLayoutComponent,
+
+ ];
+
+ const APPLICANT_COMPONENT= [
+  CandidatRegisterComponent,
+  CandidatesInsightsComponent,
+  JobApplicantsComponent,
+  JobSeekerNavbarComponent,
+  JobSeekerDashboardComponent,
+  JobSeekerLoginComponent,
+  ApplicanSideBarComponent,
+  MyApplicantsComponent,
+ ];
+
+ const COMPANY_COMPONENT = [
+  CompanyDashboardComponent,
+  CompanySideBarComponent,
+  AccountValidationComponent,
+  RegisterComponent,
+  LoginComponent,
+ ];
+
+ const ADMIN_COMPONENT = [
+  AdminDashboardComponent,
+    AdminOfferListComponent,
+    AdminLoginComponent,
+    AdminHomeComponent,
+    AdminSideBarComponent,
+ ];
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NavbarComponent,
+    SearchBarComponent,
+    PaymentSuccessComponent,
+    PaymentCancelComponent,
+    SideBarComponent,
+...COMPANY_COMPONENT,...ADMIN_COMPONENT,...APPLICANT_COMPONENT,...LAYOUTS, ...OFFER_COMPONENT
+  ],
+  imports: [...MODULES],
   providers: [
     AuthGuard,
     JobSeekerApplicationSocketConfigService,
