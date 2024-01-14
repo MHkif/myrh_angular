@@ -51,6 +51,7 @@ export class CompanyService {
       password: companyRes.password,
       image: companyRes.image,
       enabled: companyRes.enabled,
+      subscriptionStatus: companyRes.subscriptionStatus,
     };
     return company;
   }

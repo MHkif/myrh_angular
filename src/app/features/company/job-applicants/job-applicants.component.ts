@@ -9,6 +9,7 @@ import {
 } from '../../../model/jobApplicant.model';
 import { JobApplicantService } from '../../../service/job-applicant.service';
 import { AppState } from '../../../store/state/app.state';
+import {Company} from "../../../model/company.model";
 
 @Component({
   selector: 'app-job-applicants',
@@ -18,6 +19,8 @@ import { AppState } from '../../../store/state/app.state';
 export class JobApplicantsComponent implements OnInit {
   jobApplicants: Array<JobApplicant> = [];
   protected readonly JobApplicantStatus = JobApplicantStatus;
+  company!: Company | null;
+  isLogged!: boolean | null;
 
   companyId = 1;
   constructor(
@@ -26,6 +29,18 @@ export class JobApplicantsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.store
+      .select('companyAuth')
+      .subscribe(
+        (state) => (
+          (this.company = state.company),
+            (this.isLogged = state.isLogged),
+            console.log('Company : ', state.company)
+        )
+      );
+    console.log('Company Side bar: ', this.company);
+    console.log('isLogged Side bar : ', this.isLogged);
+    this.companyId=this.company?.id as number;
     console.log("this is the child component")
     this.jobApplicantService.getAllByCompany(this.companyId).subscribe({
       next: (res: Array<JobApplicant>) => {

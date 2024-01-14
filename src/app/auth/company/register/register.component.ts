@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../../store/state/app.state';
-import { Company } from '../../../model/company.model';
-import { company_signUpStart } from '../../../store/company/company.action';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../../store/state/app.state';
+import {Company, SubscriptionStatus} from '../../../model/company.model';
+import {company_signUpStart} from '../../../store/company/company.action';
 
 @Component({
   selector: 'app-register',
@@ -66,6 +65,7 @@ export class RegisterComponent implements OnInit {
         password: this.signUpForm.value.password,
         image: null,
         enabled: false,
+        subscriptionStatus: SubscriptionStatus.FREEMIUM,
       };
 
       if (this.signUpForm.value.confirmPassword === company.password) {

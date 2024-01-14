@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 import { JobSeekerService } from '../../job-seeker.service';
 import {
-  applicantLoginSuccess,
+  applicantLoginSuccess, applicantLogOut,
   applicantRegisterSuccess,
   applicantStartLogin,
   applicantStartRegister,

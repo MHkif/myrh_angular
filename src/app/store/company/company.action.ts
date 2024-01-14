@@ -26,5 +26,5 @@ export const company_signUpStart = createAction(
 
 export const company_signUpSuccess = createAction(
   COMPANY_SIGNUP_SUCCESS,
-  props<{ company: Company }>()
+  props<{ company: Company; isLogged: boolean }>()
 );
