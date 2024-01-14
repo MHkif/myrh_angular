@@ -2,6 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import { JobSeeker } from '../../model/jobSeeker.model';
 
 export const APPLICANT_LOGIN_START = '[auth/applicant] APPLICANT login start';
+export const APPLICANT_LOGOUT = '[auth/applicant] APPLICANT logout';
 export const APPLICANT_LOGIN_SUCCESS =
   '[auth/applicant] APPLICANT login success';
 export const APPLICANT_LOGIN_FAIL = '[auth/applicant] APPLICANT login fail';
@@ -17,6 +18,10 @@ export const applicantStartLogin = createAction(
   APPLICANT_LOGIN_START,
   props<{ email: string; password: string }>()
 );
+export  const applicantLogOut = createAction(
+  APPLICANT_LOGOUT,
+  // props<{ jobSeeker: JobSeeker; isLogged: boolean }>()
+)
 
 export const applicantLoginSuccess = createAction(
   APPLICANT_LOGIN_SUCCESS,

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import {
   company_loginStart,
   company_loginSuccess,
-  company_signUpStart,
+  company_signUpStart, company_signUpSuccess,
 } from './company.action';
 
 @Injectable()
@@ -25,7 +25,7 @@ export class CompanyEffect {
           map((data) => {
             console.log('Company data: ', data);
             this.route.navigate(['/company/dashboard']);
-            return company_loginSuccess({ company: data, isLogged: true });
+            return company_signUpSuccess({ company: data, isLogged: true });
           })
         );
       })

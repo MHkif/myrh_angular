@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {OfferService} from "../../../service/offer.service";
 import {JobSeekerOfferInsightsResponse,UserStatus} from "../../../model/offer.model";
+import {Company} from "../../../model/company.model";
+import {AppState} from "../../../store/state/app.state";
+import {Store} from "@ngrx/store";
 
 
 @Component({
@@ -12,6 +15,9 @@ export class CandidatesInsightsComponent implements OnInit {
 
   candidatesOfferInsights: Array<JobSeekerOfferInsightsResponse> = [];
   candidatesOfferInsightsOriginal: Array<JobSeekerOfferInsightsResponse> = [];
+  company!: Company | null;
+  isLogged!: boolean | null;
+
 
   userStatusStyle ={
     ONLINE : "bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400",
@@ -23,11 +29,24 @@ export class CandidatesInsightsComponent implements OnInit {
 
   @Input() companyId!: number;
 
-  constructor(private OfferService: OfferService) {
+  constructor(
+    private OfferService: OfferService,
+    private store: Store<AppState>
+              ) {
   }
 
   ngOnInit(): void {
-    this.companyId=1;
+    this.store
+      .select('companyAuth')
+      .subscribe(
+        (state) => (
+          (this.company = state.company),
+            (this.isLogged = state.isLogged),
+            console.log('Company : ', state.company)
+        )
+      );
+
+    this.companyId=this.company?.id as number;
     if (this.companyId) {
       this.getAllCandidatesOfferInsights();
     }else{

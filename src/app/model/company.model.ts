@@ -7,6 +7,7 @@ export interface Company {
   password: string | null | undefined;
   image: string | null | undefined;
   enabled: boolean | null | undefined;
+  subscriptionStatus: SubscriptionStatus | null | undefined;
 }
 
 export interface PageCompany {

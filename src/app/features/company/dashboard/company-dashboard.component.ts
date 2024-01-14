@@ -27,5 +27,7 @@ export class CompanyDashboardComponent {
       );
     this.isLogged = true;
     console.log('isLogged Dashboard : ', this.isLogged);
+    console.log(this.company?.subscriptionStatus?.toString())
+
   }
 }
