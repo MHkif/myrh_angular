@@ -28,7 +28,7 @@ export class ApplicantEffect {
           map((data) => {
             console.log('data :', data);
             const jobSeeker = this.jobSeekerService.jobSeekerMapper(data);
-            this.route.navigate(['/dashboard']);
+            this.route.navigate(['/applicant/dashboard']);
             return applicantLoginSuccess({
               jobSeeker: jobSeeker,
               isLogged: true,
@@ -45,7 +45,7 @@ export class ApplicantEffect {
       exhaustMap((action) => {
         return this.jobSeekerService.save(action.jobSeeker).pipe(
           map((jobSeeker) => {
-            this.route.navigate(['/dashboard']);
+            this.route.navigate(['/applicant/dashboard']);
             return applicantRegisterSuccess({
               jobSeeker: jobSeeker,
               isLogged: true,

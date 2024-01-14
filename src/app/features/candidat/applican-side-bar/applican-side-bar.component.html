@@ -6,8 +6,8 @@
       <!-- Profile -->
       <li class="marker:text-white min-w-max">
         <a
-          routerLink="/dashboard"
-          aria-label="dashboard"
+          routerLink="/applicant/dashboard"
+          aria-label="/applicant/dashboard"
           class="group relative flex items-center space-x-4 p-1.5 text-purple-50"
         >
           <div class="flex w-full items-center space-x-4">
@@ -29,7 +29,7 @@
       <ul class="mt-5 space-y-1 tracking-wide text-purple-700">
         <li class="min-w-max">
           <a
-            routerLink=""
+            routerLink="//applicant/dashboard/offers"
             aria-label="home"
             class="group relative flex items-center space-x-4 p-1"
           >
@@ -57,8 +57,8 @@
         </li>
         <li class="min-w-max">
           <a
-            href="/dashboard/jobApplicants"
-            aria-label="dashboard"
+            routerLink="/applicant/dashboard/jobApplicants"
+            aria-label="jobApplicants"
             class="group relative flex items-center space-x-4 p-1"
           >
             <div class="group flex items-center justify-center rounded p-2">
@@ -83,7 +83,7 @@
     </div>
     <li class="marker:text-white min-w-max">
       <a
-        [routerLink]="['/jobSeeker/auth/login']"
+        [routerLink]="['/applicant/auth/login']"
         class="group flex items-center space-x-4 p-1 text-white cursor-pointer"
       >
         <div class="flex items-center justify-center rounded p-2">

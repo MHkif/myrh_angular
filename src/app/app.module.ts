@@ -54,6 +54,7 @@ import { ApplicantLayoutComponent } from './features/candidat/applicant-layout/a
 import { ApplicanSideBarComponent } from './features/candidat/applican-side-bar/applican-side-bar.component';
 import { MyApplicantsComponent } from './features/candidat/my-applicants/my-applicants.component';
 import { AuthAdminGuard } from './core/guards/admin/auth-admin.guard';
+import { AuthCompanyGuard } from './core/guards/company/auth-company-guard.guard';
 
 const MODULES = [
   CommonModule,
@@ -132,6 +133,7 @@ const ADMIN_COMPONENT = [
   providers: [
     AuthGuard,
     AuthAdminGuard,
+    AuthCompanyGuard,
     JobSeekerApplicationSocketConfigService,
     ToastService,
   ],
