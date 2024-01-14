@@ -3,11 +3,11 @@
 >
   <div class="flex flex-col justify-between h-screen pb-4">
     <div class="">
-      <!-- Profile -->
+      <!-- Admin Panel -->
       <li class="marker:text-white min-w-max">
         <a
-          routerLink="/profile"
-          aria-label="profile"
+          routerLink="/admin-panel"
+          aria-label="admin-panel"
           class="group relative flex items-center space-x-4 p-1.5 text-purple-50"
         >
           <div class="flex w-full items-center space-x-4">
@@ -30,8 +30,8 @@
       <ul class="mt-5 space-y-1 tracking-wide text-purple-700">
         <li class="min-w-max">
           <a
-            href="/home"
-            aria-label="home"
+            [routerLink]="['offers']"
+            aria-label="offers"
             class="group relative flex items-center space-x-4 p-1"
           >
             <div class="group flex items-center justify-center rounded p-2">
@@ -58,7 +58,7 @@
         </li>
         <li class="min-w-max">
           <a
-            href="/offers"
+            [routerLink]="['offers-companies']"
             aria-label="offers"
             class="group relative flex items-center space-x-4 p-1"
           >
@@ -76,12 +76,13 @@
             </div>
             <span
               class="flex items-center text-gray-900 group-hover:text-purple-700 font-medium"
-              >Offers</span
+              >All Offers</span
             >
           </a>
         </li>
       </ul>
     </div>
+    <!-- Log Out -->
     <li class="marker:text-white min-w-max">
       <a
         [routerLink]="['/admin/auth/login']"

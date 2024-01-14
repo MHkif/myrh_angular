@@ -6,7 +6,6 @@ const _adminAuthReducer = createReducer(
   initialState,
   on(adminLoginSuccess, (state, action) => {
     console.log('_adminAuthReducer : action : ', action);
-    console.log('_adminAuthReducer : state : ', state);
 
     return {
       ...state,

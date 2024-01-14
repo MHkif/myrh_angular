@@ -20,6 +20,8 @@ import { JobSeekerLoginComponent } from './auth/applicant/login/login.component'
 import { AdminLoginComponent } from './auth/admin/login/admin-login.component';
 import { MyApplicantsComponent } from './features/candidat/my-applicants/my-applicants.component';
 import { OffersComponent } from './offer/offers/offers.component';
+import { AdminOfferListComponent } from './shared/admin/admin-offer-list/admin-offer-list.component';
+import { AuthAdminGuard } from './core/guards/admin/auth-admin.guard';
 
 const routes: Routes = [
   // {
@@ -156,24 +158,25 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: AdminDashboardComponent,
+        canActivate: [AuthAdminGuard],
         children: [
-          {
-            path: '',
-            component: OffersComponent,
-          },
-          { path: '', redirectTo: '', pathMatch: 'full' },
+          { path: '', redirectTo: 'offers', pathMatch: 'full' },
           {
             path: 'offers',
-            component: OffersComponent,
+            children: [
+              {
+                path: '',
+                component: OffersComponent,
+              },
+              {
+                path: ':id',
+                component: OfferDetailComponent,
+              },
+            ],
           },
-
           {
-            path: 'offers/new',
-            component: OfferFormComponent,
-          },
-          {
-            path: 'offers/:id',
-            component: OfferDetailComponent,
+            path: 'offers-companies',
+            component: AdminOfferListComponent,
           },
         ],
       },
@@ -191,22 +194,7 @@ const routes: Routes = [
   {
     path: 'offers',
     component: HomeComponent,
-    // canActivate: [AuthGuard],
   },
-  // {
-  //   path: '',
-  //   redirectTo: 'offers',
-  //   pathMatch: 'full',
-  // },
-  // {
-  //   path: 'offers/new',
-  //   component: OfferFormComponent,
-  //   // canActivate: [AuthGuard],
-  // },
-  // {
-  //   path: 'offers/:id',
-  //   component: OfferDetailComponent,
-  // },
 ];
 
 @NgModule({
